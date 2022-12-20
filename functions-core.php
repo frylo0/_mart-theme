@@ -85,9 +85,7 @@ function footer_enqueue_styles_and_scripts() {
     echo implode("\n", $PAGE_INSERTIONS_BODY);
 }
 
-// TODO: add precommit prettify and tsc
 // TODO: add commitlint with conventional commits
 // TODO: add tool to change version of project when commit
 // TODO: add plop generator
 // TODO: add stylelint
-// FIXME: need to use submodule for husky ???
