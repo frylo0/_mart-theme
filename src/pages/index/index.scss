@@ -1,0 +1,19 @@
+.flex {
+	display: flex;
+}
+
+.flex-item {
+	width: 100px;
+	height: 100px;
+	margin-inline-end: 0.25em;
+
+	&_a {
+		background: aqua;
+	}
+	&_b {
+		background: blue;
+	}
+	&_c {
+		background: cadetblue;
+	}
+}

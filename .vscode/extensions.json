@@ -1,0 +1,8 @@
+{
+	"recommendations": [
+		"dbaeumer.vscode-eslint",
+		"EditorConfig.EditorConfig",
+		"bmewburn.vscode-intelephense-client",
+		"sibiraj-s.vscode-scss-formatter",
+	],
+}
