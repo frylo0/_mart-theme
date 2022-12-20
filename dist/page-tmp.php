@@ -10,7 +10,7 @@ insert_to_page([
 		'/components/common/entry.js',
 		'/js/page-tmp.js',
 	]],
-], '10-12-22--23:52:36');
+], '21-12-22--00:12:23');
 ?>
 
 <?php use_header() ?>
