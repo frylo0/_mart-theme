@@ -7,5 +7,5 @@ import 'sections/Slider/Slider';
 import $ from 'jquery';
 
 $.when($.ready).then(() => {
-	alert('jQuery hello 1');
+	// Do stuff
 });

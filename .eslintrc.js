@@ -27,6 +27,7 @@ module.exports = {
 		'webpack.config.mjs',
 		'webpack.reload.mjs',
 		'lint-staged.config.js',
+		'env',
 	],
 	'rules': {
 		'prettier/prettier': 'error',
