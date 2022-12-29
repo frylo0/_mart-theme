@@ -36,6 +36,10 @@ yarn dev
 
 > **Solution**: Press `Ctrl+C` two times
 
+- Adding new page need to restart dev mode
+
+> **Solution**: Simply restart `yarn dev` command
+
 ### Create production build
 
 ```bash
