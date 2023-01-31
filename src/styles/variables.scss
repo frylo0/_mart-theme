@@ -1,0 +1,32 @@
+// <Colors>
+// Naming: $-c-{color-name}
+
+// brighter
+$-c1: #FFFFFF;
+$-c2: #F6D3CE;
+$-c3: #EDA69C;
+$-c4: #FE9081;
+$-c5: #66433D;
+$-c6: #000000;
+// darker
+
+$-c1-25: transparentize($-c1, 0.75);
+$-c2-25: transparentize($-c2, 0.75);
+$-c3-25: transparentize($-c3, 0.75);
+$-c4-25: transparentize($-c4, 0.75);
+$-c5-25: transparentize($-c5, 0.75);
+$-c6-25: transparentize($-c6, 0.75);
+
+$-c1-50: transparentize($-c1, 0.50);
+$-c2-50: transparentize($-c2, 0.50);
+$-c3-50: transparentize($-c3, 0.50);
+$-c4-50: transparentize($-c4, 0.50);
+$-c5-50: transparentize($-c5, 0.50);
+$-c6-50: transparentize($-c6, 0.50);
+// </Colors>
+
+$headerHeight: calc(123 / 16 * 1rem);
+$headerLogoWidth: calc(307 / 16 * 1em);
+$sectionMainMT: calc(47 / 16 * 1rem);
+$sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
+$select-row-size: calc(27 / 16 * 1em);

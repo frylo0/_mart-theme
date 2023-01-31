@@ -33,6 +33,10 @@ relocate();
 define( 'URL_ROOT', get_template_directory_uri() . '/' . NEW_THEME_LOCATION);
 $URL_ROOT = URL_ROOT;
 
+define( 'FILE_ROOT', get_template_directory() . '/' . NEW_THEME_LOCATION);
+$FILE_ROOT = FILE_ROOT;
+
+
 $PAGE_INSERTIONS_HEAD = [];
 $PAGE_INSERTIONS_BODY = [];
 

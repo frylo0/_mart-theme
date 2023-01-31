@@ -1,0 +1,108 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-01-09, 8:27:01 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+$headerLogoWidth: px_to_em(307);
+
+.header {
+	padding-top: px_to_em(46);
+	padding-bottom: px_to_em(46);
+	z-index: 100;
+	background: linear-gradient($-c1 80%, transparent);
+
+	@media screen and (max-width: $-stop-phone-max ) {
+		padding-top: 2em;
+		padding-bottom: 0.5em;
+		background: white;
+	}
+
+	>.devicer {
+		overflow: visible;
+	}
+
+	&_small {
+		background: $-c1;
+		box-shadow: 0 3px 5px #00000010;
+	}
+
+	&__logo {
+		width: $headerLogoWidth;
+		height: px_to_em(77);
+		transform-origin: 0% 50%;
+		font-size: 1.25em;
+
+		img {
+			width: px_to_em(349);
+			height: px_to_em(108);
+			margin-left: px_to_em(-15);
+			margin-top: px_to_em(-9);
+		}
+
+		@media screen and (max-width: $-stop-phone-max ) {
+			font-size: 1.5em;
+			height: px_to_em(32);
+			max-width: 50vw;
+
+			img {
+				width: px_to_em(179);
+				height: px_to_em(56);
+				margin-left: px_to_em(-7);
+				margin-top: px_to_em(-13);
+			}
+		}
+
+		@media screen and (max-width: 425px) {
+			font-size: 1em;
+			width: 50vw;
+		}
+	}
+
+	&__slogan {
+		font-size: px_to_em(24);
+		margin-bottom: px_to_em(14, 21);
+
+		&_mobile {
+			font-size: px_to_em(12);
+			margin-top: 1.5em;
+
+			.header__slogan {
+				margin-bottom: 0;
+			}
+
+			@media screen and (min-width: calc($-stop-phone-max + 1px)) {
+				display: none !important;
+			}
+
+			@media screen and (max-width: 410px) {
+				font-size: px_to_em(9);
+			}
+		}
+
+		&_pc {
+			@media screen and (max-width: $-stop-phone-max ) {
+				display: none;
+			}
+		}
+	}
+
+	&__mobile-line {
+		height: 2px;
+		width: calc(100% - 290px);
+		margin-top: 0.4em;
+		background: linear-gradient(to right, transparent, $-c2);
+
+		@media screen and (max-width: 410px) {
+			width: calc(100% - 220px);
+		}
+	}
+
+	@media screen and (max-width: $-stop-phone-max ) {
+		&__wrapper {
+			justify-content: space-between;
+		}
+	}
+}

@@ -1,0 +1,22 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-01-09, 8:28:07 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+.diashad {
+	$shadow-height: px_to_em(142);
+
+	position: relative;
+	z-index: -1;
+	height: 0px;
+	transform: translateY(#{-$shadow-height});
+
+	&__shadow {
+		position: absolute;
+		height: $shadow-height;
+		width: 100%;
+	}
+}

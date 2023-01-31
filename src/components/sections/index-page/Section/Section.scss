@@ -1,0 +1,65 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2022-12-30, 12:06:38 AM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+.section {
+	&_reversed {
+		flex-direction: row-reverse;
+	}
+
+	&__arrows {
+		.arrow {
+			animation: arrow-glow 2s infinite;
+
+			&:nth-child(1) {
+				stroke: $-c2;
+				animation-delay: 0.6s;
+			}
+			&:nth-child(2) {
+				transform: translateY(-10px);
+				stroke: $-c2-50;
+				animation-delay: 0.3s;
+			}
+			&:nth-child(3) {
+				transform: translateY(-20px);
+				stroke: $-c2-25;
+			}
+
+			@keyframes arrow-glow {
+				0% { stroke: $-c2; }
+				50% { stroke: $-c2-25; }
+				100% { stroke: $-c2; }
+			}
+		}
+
+		@media screen and (max-width: $-stop-phone-max ) {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: $-stop-phone-max ) {
+		flex-direction: column-reverse;
+		align-items: center;
+	}
+}
+
+// section main
+.section {
+	@media screen and (min-width: $-stop-tablet-min ) {
+		&_main {
+			height: $sectionMainHeight;
+
+			.section__presentation {
+				&-front,
+				&-back {
+					width: $sectionMainHeight;
+					height: $sectionMainHeight;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+$bodyFontSize: 14;
+
+@function px_to_em($pixelVal, $parentsSize: $bodyFontSize) {
+	@return calc($pixelVal / $parentsSize * 1em);
+}
+@function px_to_rem($pixelVal, $parentsSize: $bodyFontSize) {
+	@return calc($pixelVal / $parentsSize * 1rem);
+}

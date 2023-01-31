@@ -1,0 +1,57 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-01-31, 9:45:55 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+@import '../local-variables.scss';
+
+.section__presentation {
+	@media screen and (min-width: $-stop-tablet-min ) {
+		width: calc(50% - #{$sectionContentGutter});
+	}
+
+	margin-left: $sectionContentGutter;
+
+	&-front,
+	&-back {
+		@media screen and (min-width: $-stop-tablet-min ) {
+			width: px_to_em(339);
+			height: px_to_em(339);
+			max-width: calc(50vw - 1em);
+		}
+
+		@media screen and (max-width: $-stop-phone-max ) {
+			$squareSize: calc(100vw - 5.5rem);
+			$squareSizeMax: px_to_em(500);
+			width: $squareSize;
+			height: $squareSize;
+			max-width: $squareSizeMax;
+			max-height: $squareSizeMax;
+		}
+
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	&-front {
+		border-radius: 50%;
+		transform: translateY(-0.25em);
+	}
+
+	@media screen and (max-width: $-stop-phone-max ) {
+		margin-left: 0;
+	}
+}
+
+.section_reversed {
+	.section__presentation {
+		margin-left: 0;
+		margin-right: $sectionContentGutter;
+
+		@media screen and (max-width: $-stop-phone-max ) {
+			margin-right: 0;
+		}
+	}
+}

@@ -11,6 +11,7 @@ foreach ($folders as $folder) {
         case '.':
         case '..': 
         case 'entry.js':
+        case 'entry.js.LICENSE.txt':
         case 'entry.php':
         case 'entry.css':
             break;
