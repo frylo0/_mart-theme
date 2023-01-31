@@ -1,0 +1,25 @@
+// <Fonts>
+// Naming: $-f-{font-name}
+
+$f1: 'ars-b', 'Arsenal-Bold', "sans-serif";
+$f2: 'ars-i', 'Arsenal-Italic', "sans-serif";
+$f3: 'rlw', 'Raleway-Regular', "'Open Sans', 'Ubuntu', 'Roboto', 'Arial', sans-serif";
+$f4: 'ars', 'Arsenal-Regular', "sans-serif";
+
+$fonts: $f1, $f2, $f3, $f4;
+
+@each $alias, $font, $fallback in $fonts {
+	@font-face {
+		font-family: $font;
+		src: url('/assets/fonts/#{$font}.ttf') format('truetype');
+	}
+
+	:root {
+		--f-#{$alias}: '#{$font}', #{$fallback};
+	}
+
+	.ff-#{$alias} {
+		font-family: var(--f-#{$alias});
+	}
+}
+// </Fonts>

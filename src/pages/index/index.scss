@@ -1,23 +1,37 @@
+@import '/styles/bundle.scss';
+
 .page-index {
 
 }
 
-.flex {
-	display: flex;
+$headerHeight: calc(123 / 16 * 1rem);
+$sectionMainMT: calc(47 / 16 * 1rem);
+$sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
+
+body {
+	padding-top: $headerHeight;
 }
 
-.flex-item {
-	width: 100px;
-	height: 100px;
-	margin-inline-end: 0.25em;
+.section {
+	$marginSize: calc((100vh - #{px_to_em(339)}) / 2.5);
+	margin-top: $marginSize;
 
-	&_a {
-		background: aqua;
+	&_main {
+		margin-top: $sectionMainMT;
 	}
-	&_b {
-		background: blue;
+
+	@media screen and (min-width: $-stop-tablet-min ) {
+		&:last-of-type {
+			margin-bottom: $marginSize;
+		}
 	}
-	&_c {
-		background: cadetblue;
+
+	@media screen and (max-width: $-stop-phone-max ) {
+		margin-top: 1em;
+		margin-bottom: 4em;
 	}
+}
+
+.contacts {
+	margin-top: px_to_em(68);
 }

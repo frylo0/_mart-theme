@@ -4,9 +4,82 @@
  * Company: frity corp.
  */
 
+@import '/styles/bundle.scss';
 
 .button {
-    &_red {
-        border: 1px solid red;
-    }
+	appearance: none;
+	padding: px_to_em(6) px_to_em(14);
+	font-family: var(--f-rlw);
+	font-size: px_to_em(13);
+	color: $-c6;
+	border: none;
+	border-radius: px_to_em(5);
+	background: $-c2-50;
+	transition: background-color 0.25s;
+	outline: none;
+
+	&:disabled {
+		opacity: 0.75;
+		cursor: not-allowed;
+	}
+
+	&__inflation {
+		display: none;
+		box-sizing: border-box;
+		content: '';
+		position: absolute;
+		width: 100%;
+		border-radius: px_to_em(5);
+		left: 0;
+		top: 0;
+		height: 100%;
+		border: 1px solid $-c2;
+	}
+
+	&:hover {
+		background: $-c2;
+
+		.button__inflation {
+			display: block;
+			animation: inflation 3s infinite;
+		}
+		@for $i from 1 through 5 {
+			.button__inflation_#{$i+1} {
+				animation-delay: $i * 0.5s;
+			}
+		}
+	}
+
+	@keyframes inflation {
+		$inflationSize: px_to_em(15);
+
+		0% {
+			left: 0;
+			top: 0;
+			width: calc(100%);
+			height: calc(100%);
+			border-color: $-c2-50;
+		}
+		100% {
+			left: -$inflationSize;
+			top: -$inflationSize;
+			width: calc(100% + #{$inflationSize * 2});
+			height: calc(100% + #{$inflationSize * 2});
+			border-color: transparent;
+		}
+	}
+
+
+	// Modes
+
+	&_outlined {
+		background: transparent;
+		border: 2px solid $-c2;
+	}
+	&_full-width {
+		width: 100%;
+	}
+	&_input-controls-eye {
+		background: $-c2-25;
+	}
 }

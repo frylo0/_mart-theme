@@ -14,7 +14,7 @@ import PreventOutputPlugin from './utils/prevent-output-plugin.js';
 import { entries } from './env/webpack.entries.mjs';
 
 
-/** @type {import('webpack').Configuration} */
+/** @returns {import('webpack').Configuration} */
 const config = ({ isDevelopment, isProduction, isMode }) => ({
     entry: mapObjectValues(entries, (value) => value.entry),
     
@@ -42,6 +42,8 @@ const config = ({ isDevelopment, isProduction, isMode }) => ({
         extensions: ['.ts', '.js'],
         alias: {
             '~assets': path.resolve(__dirname, 'src/assets/'),
+            '/assets': path.resolve(__dirname, 'src/assets/'),
+            '/styles': path.resolve(__dirname, 'src/styles/'),
         },
         plugins: [
             new TsconfigPathsPlugin({ silent: true }), // Allow WebPack to know about paths defined in tsconfig
@@ -105,22 +107,20 @@ const config = ({ isDevelopment, isProduction, isMode }) => ({
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'sass-loader',
                     'postcss-loader',
+                    'sass-loader',
                 ],
             },
             {
                 // anything in assets folder
                 test: new RegExp(RegExpEscape(join(__srcFolder, 'assets') + path.sep)),
                 exclude: /node_modules/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: (filePath, fileQuery) => {
-                            return dotted(filePath.replace(__srcFolder, ''));
-                        },
-                    },
-                }
+				type: 'asset/resource', // assets are handled by webpack, check output.assetModuleFilename
+				generator: {
+					filename: (pathData) => { // defines where to store assets
+						return pathData.filename.replace(/^src[\\\/]/, '') + '?hash=[hash]';
+					},
+				},
             },
         ],
     },

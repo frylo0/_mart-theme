@@ -1,0 +1,12 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-01-09, 8:26:56 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+.title {
+	font-size: px_to_em(24);
+	line-height: 0.8em;
+}

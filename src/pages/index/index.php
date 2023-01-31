@@ -1,33 +1,22 @@
 <?php use_header() ?>
 
 <div class="page page-index">
-	<?php Button('Hello, World!') ?>
-	<?php Circle() ?>
-	<?php Slider() ?>
+	<?php _Header() ?>
+	<?php ScrollTopButton() ?>
 
-	<!-- Raw insert -->
-	<img src="~assets/images/puppy.jpg" alt="Puppy" />
+	<?php Devicer::Start() ?>
+		<?php $sections = select_index_page_sections(); ?>
 
-	<!-- Single quotes -->
-	<?php $puppy_url = '~assets/images/puppy.jpg'; ?>
-	<img src="<?= $puppy_url ?>" alt="Puppy" />
+		<?php foreach ($sections as $i => $section) : ?>
+			<?php $is_main = $i === 0; ?>
+			<?php $is_reversed = $i % 2 === 0; ?>
+			<?php Section($section, $is_main, $is_reversed) ?>
+		<?php endforeach; ?>
 
-	<!-- Double quotes -->
-	<?php $puppy_url = "~assets/images/puppy.jpg"; ?>
-	<img src="<?= $puppy_url ?>" alt="Puppy" />
+		<?php Contacts() ?>
+	<?php Devicer::End() ?>
 
-	<!-- Multiline -->
-	<?php 
-	echo <<<STRING
-		<img src="~assets/images/puppy.jpg" alt="Puppy" />
-	STRING;
-	?>
-
-	<div class="flex">
-		<div class="flex-item flex-item_a"></div>
-		<div class="flex-item flex-item_b"></div>
-		<div class="flex-item flex-item_c"></div>
-	</div>
+	<?php Footer() ?>
 </div>
 
 <?php use_footer() ?>

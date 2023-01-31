@@ -6,3 +6,5 @@
 
 import './Button.php';
 import './Button.scss';
+
+import 'utils/php/attributes-string.php';

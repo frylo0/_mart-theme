@@ -1,0 +1,69 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-01-09, 9:21:50 PM
+ * Company: frity.org
+ */
+
+@import "/styles/bundle.scss";
+
+.header__menu {
+	max-width: calc((100% + #{$headerLogoWidth}) / 2);
+	align-self: flex-end;
+
+	&-li {
+		text-shadow: none;
+		margin-top: px_to_em(7);
+		z-index: 20;
+	}
+
+	&-underline {
+		height: px_to_em(3);
+		background: $-c3;
+		z-index: 10;
+
+		&_main {
+			background: $-c2;
+		}
+	}
+
+	@media screen and (max-width: $-stop-phone-max ) {
+		&-content {
+			display: none;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			transform: translateY(100%);
+			background: $-c2;
+			color: white;
+			padding: 1.25em;
+		}
+
+		&-li {
+			white-space: normal;
+			margin-top: 0.75em;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+
+		&-underline {
+			&:not(&_main) {
+				display: none;
+			}
+
+			&_main {
+				background: $-c1;
+			}
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			width: 3em;
+			height: 3em;
+			cursor: pointer;
+			background: url('/assets/images/menu-burger.svg') center/contain no-repeat;
+		}
+	}
+}

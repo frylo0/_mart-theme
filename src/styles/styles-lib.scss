@@ -1,0 +1,203 @@
+@import './bundle.scss';
+@import './fonts.scss';
+
+/* <StylesLib> */
+* {
+	box-sizing: border-box;
+}
+
+$libValues: (
+	'v1': -1em,
+	'0': 0em,
+	'o25': 0.25em,
+	'o5': 0.5em,
+	'o75': 0.75em,
+	'1': 1em,
+	'1o25': 1.25em,
+	'1o5': 1.5em,
+	'2': 2em,
+	'2o5': 2.5em,
+	'A': auto
+);
+
+@mixin propGenerator($props, $values: $libValues) {
+	@each $propName, $prop in $props {
+		@each $name, $val in $values {
+			#{$propName}#{$name} {
+				@if type-of($prop)==list {
+					@each $singleProp in $prop {
+						#{$singleProp}: $val;
+					}
+				}
+				@else {
+					#{$prop}: $val;
+				}
+			}
+		}
+	}
+	// STOP: FLEX;
+}
+
+.row {
+	display: flex;
+}
+.col {
+	display: flex;
+	flex-direction: column;
+}
+.wrap {
+	flex-wrap: wrap;
+}
+.jcc {
+	justify-content: center;
+}
+.jcsb {
+	justify-content: space-between;
+}
+.aic {
+	align-items: center;
+}
+.aife {
+	align-items: flex-end;
+}
+.aifs {
+	align-items: flex-start;
+}
+
+// STOP: POSITION
+.rel {
+	position: relative;
+}
+.abs {
+	position: absolute;
+}
+.fix {
+	position: fixed;
+}
+
+* {
+	@include propGenerator(('.top': 'top', '.bottom': 'bottom', '.right': 'right', '.left': 'left'));
+}
+
+.ct-abs {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.ct-abs_horiz {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.ct-abs_vert {
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+//DISPLAY
+.dn {
+	display: none;
+}
+.db {
+	display: block;
+}
+.dib {
+	display: inline-block;
+}
+.dg {
+	display: grid;
+}
+.ovh {
+	overflow: hidden;
+}
+.cup {
+	cursor: pointer;
+}
+.usn {
+	user-select: none;
+}
+
+// STOP: SIZE
+.h100 {
+	height: 100%;
+}
+.w100 {
+	width: 100%;
+}
+.hfc {
+	height: fit-content;
+}
+.wfc {
+	width: fit-content;
+}
+
+// STOP: MARGIN & PADDING
+* {
+	@include propGenerator(('.p': 'padding', '.pt': 'padding-top', '.pb': 'padding-bottom', '.ptb': ('padding-top', 'padding-bottom')));
+	@include propGenerator(('.pl': 'padding-left', '.pr': 'padding-right', '.plr': ('padding-left', 'padding-right')));
+	@include propGenerator(('.m': 'margin', '.mt': 'margin-top', '.mb': 'margin-bottom', '.mtb': ('margin-top', 'margin-bottom')));
+	@include propGenerator(('.ml': 'margin-left', '.mr': 'margin-right', '.mlr': ('margin-left', 'margin-right')));
+}
+
+// STOP: TEXT
+* {
+	@include propGenerator(('.fz': 'font-size'));
+}
+
+.tac {
+	text-align: center;
+}
+.taj {
+	text-align: justify;
+}
+.tar {
+	text-align: right;
+}
+.tdn {
+	text-decoration: none;
+}
+
+// STOP: FONT
+.fwb {
+	font-weight: bold;
+}
+.fwn {
+	font-weight: normal;
+}
+
+// STOP: SPECIAL
+.rub {
+	// Usage: span.rub P
+	line-height: 5px;
+	width: 0.35em;
+	border-bottom: 1px solid #000;
+	display: inline-block;
+}
+/* </StylesLib> */
+
+/* <Colors> */
+:root {
+	--c1: #{$-c1};
+	--c2: #{$-c2};
+	--c3: #{$-c3};
+	--c4: #{$-c4};
+	--c5: #{$-c5};
+	--c6: #{$-c6};
+
+	--c1-25: #{$-c1-25};
+	--c2-25: #{$-c2-25};
+	--c3-25: #{$-c3-25};
+	--c4-25: #{$-c4-25};
+	--c5-25: #{$-c5-25};
+	--c6-25: #{$-c6-25};
+
+	--c1-50: #{$-c1-50};
+	--c2-50: #{$-c2-50};
+	--c3-50: #{$-c3-50};
+	--c4-50: #{$-c4-50};
+	--c5-50: #{$-c5-50};
+	--c6-50: #{$-c6-50};
+}
+/* </Colors> */

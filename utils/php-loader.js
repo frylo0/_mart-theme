@@ -4,7 +4,17 @@ const path = require('path');
 
 const tsconfig = JSON.parse(fs.readFileSync(path.resolve(__dirname, './../tsconfig.json')).toString().replace(/\/\*.*?\*\//g, '').replace(/\/\/.*/g, ''));
 const baseUrl = tsconfig.compilerOptions.baseUrl;
-const distBaseUrl = baseUrl.replace(/src[\\\/]/, '');
+const distBaseUrl = (fileName, isPage) => {
+	if (isPage) {
+		return '';
+	} else {
+		const dirName = path.dirname(fileName);
+		const distBase = path.resolve(__dirname, '..', baseUrl);
+		const relDistBase = path.relative(dirName, distBase);
+		
+		return relDistBase;
+	}
+};
 
 
 function aliases(content) {
@@ -73,16 +83,26 @@ function imports(content) {
 	for (const importString of bundleImports) {
 		const quote = importString.match(/import\s+(['"])/)[1];
 		const endsWithExt = new RegExp(String.raw`\.\w+?${quote};?`).test(importString);
+		const endsWithPhp = new RegExp(String.raw`\.php${quote};?`).test(importString);
+
+		let importPath = importString
+			.replace(/^import\s+/, '')
+			.replace(new RegExp('^' + quote), '')
+			.replace(new RegExp(quote + ';.*$'), '');
 
 		if (!endsWithExt) { // if is imported ts file - possible dependency
-			let importPath = importString.replace(/^import\s+/, '').replace(new RegExp('^' + quote), '').replace(new RegExp(quote + ';?$'), '');
-
 			if (/^\w/.test(importPath)) { // if starts with letter, not relative import
-				importPath = path.join(distBaseUrl, importPath);
+				importPath = path.join(distBaseUrl(fileName, isPage), importPath);
 			}
 
 			importPath += '.php';
 			requirements.push(importPath);
+		}
+		else if (endsWithPhp) { // if import of php file
+			if (/^\w/.test(importPath)) { // if starts with letter, not relative import
+				importPath = path.join(distBaseUrl(fileName, isPage), importPath);
+				requirements.push(importPath);
+			}
 		}
 	}
 
@@ -91,10 +111,13 @@ function imports(content) {
 
 		for (const importPath of requirements)
 			requirementsString += `require_once __DIR__ . '/${importPath}';\n`;
-
-		requirementsString += '\n';
-
-		prependsString = requirementsString + prependsString;
+		
+		if (prependsString !== '') { // if there are some imports before
+			requirementsString += '\n';
+			prependsString = requirementsString + prependsString;
+		} else { // if only requirements
+			prependsString = requirementsString;
+		}
 	}
 
 	if (prependsString !== '') {

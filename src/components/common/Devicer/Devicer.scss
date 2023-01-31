@@ -1,0 +1,16 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-01-09, 8:26:49 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+.devicer {
+	@media screen {
+		padding: 0 2.5em;
+	}
+	@media screen and (min-width: $-stop-pc-max ) {
+		width: 1140px;
+	}
+}

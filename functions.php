@@ -8,3 +8,7 @@
  */
 
 require_once __DIR__ . '/functions-core.php';
+
+require_once __DIR__ . '/functions/post-types.php';
+require_once __DIR__ . '/functions/data-selectors.php';
+require_once __DIR__ . '/functions/yaost-seo-config.php';

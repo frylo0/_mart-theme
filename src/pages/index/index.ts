@@ -1,11 +1,13 @@
+import '../../styles/global.scss';
+
 import './index.php';
 import './index.scss';
 
-import 'blocks/Circle/Circle';
-import 'sections/Slider/Slider';
+import 'components/sections/index-page/Section/Section';
+import 'components/blocks/Contacts/Contacts';
 
 import $ from 'jquery';
 
-$.when($.ready).then(() => {
-	// Do stuff
+$(function () {
+	// Some stuff here
 });
