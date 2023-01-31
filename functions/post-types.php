@@ -56,7 +56,7 @@ function theme_post_types() {
 			'not_found'          => 'Настройки не найдены', // если в результате поиска ничего не было найдено
 			'not_found_in_trash' => 'Нет подходящих настроек в корзине', // если не было найдено в корзине
 			'parent_item_colon'  => '', // для родителей (у древовидных типов)
-			'menu_name'          => 'Настройки', // название меню
+			'menu_name'          => 'Настройки сайта', // название меню
 		],
 		'description'         => 'Определяют общие вещи на сайте',
 		'public'              => true,
@@ -69,7 +69,7 @@ function theme_post_types() {
 		'show_in_rest'        => true, // добавить в REST API. C WP 4.7
 		'rest_base'           => null, // $post_type. C WP 4.7
 		'menu_position'       => 40,
-		'menu_icon'           => 'dashicons-admin-settings',
+		'menu_icon'           => 'dashicons-admin-generic',
 		//'capability_type'   => 'post',
 		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
 		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
