@@ -63,22 +63,28 @@ function Contacts (
 	<?php 
 		attributes_extract($attributes, 'class', $class);
 		attributes($attributes);
+
+		$contacts = select_setting('contacts');
+
+		$facebook = $contacts['facebook'];
+		$instagram = $contacts['instagram'];
+		$skype = $contacts['skype'];
 	?>
 
     <div class="contacts <?= $class ?>" <?= $attributes ?>>
 		<?php Title('Контакты', ['class' => 'mb2']) ?>
 
     	<div class="row jcc mb1">
-			<?php ContactsCard('fi(69)', 'fi(68)', 'contacts_facebook.png') ?>
-			<?php ContactsCard('fi(72)', 'fi(71)', 'contacts_instagram.png', ['id' => 'contact_instagram']) ?>
-			<?php ContactsCard('fi(75)', 'fi(74)', 'contacts_skype.png') ?>
+			<?php ContactsCard($facebook['label'], $facebook['link'], 'contacts_facebook.png') ?>
+			<?php ContactsCard($instagram['label'], $instagram['link'], 'contacts_instagram.png', ['id' => 'contact_instagram']) ?>
+			<?php ContactsCard($skype['label'], $skype['link'], 'contacts_skype.png') ?>
 		</div>
     	<div class="row jcc">
 			<?php
-				$tel = 'fi(160)';
+				$tel = $contacts['phone'];
 				$tel_link = 'tel:+'.$tel;
 				$tel_html = '<span>+'.substr($tel,0,1).' ('.substr($tel,1,3).')</span> '.substr($tel,4,3).'-'.substr($tel,7,2).'-'.substr($tel,9,2);
-				$email = 'fi(161)';
+				$email = $contacts['email'];
 				$at = strpos($email, '@');
 				$email_html = '<span>'.substr($email,0,$at).'</span>'.substr($email,$at);
 				$email_link = 'mailto:'.$email;
