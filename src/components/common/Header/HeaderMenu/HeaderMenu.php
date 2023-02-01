@@ -12,8 +12,12 @@ function HeaderMenu (
 	$attributes = []
 ) { ?>
 	<?php 
+		global $wp;
+
 		attributes_extract($attributes, 'class', $class);
 		attributes($attributes);
+
+		$current_url = home_url($wp->request);
 	?>
 
 	<?php $is_logged_in = true; ?>
@@ -23,7 +27,8 @@ function HeaderMenu (
 		<div class="header__menu-underline abs"></div>
 		<div class="header__menu-content">
 			<?php foreach ($links as $title => $href) : ?>
-				<?php _Link($title, $href, ['class' => "header__menu-li ml1o25 rel"]) ?>
+				<?php $current_class = $href === $current_url ? 'header__menu-li_current' : ''; ?>
+				<?php _Link($title, $href, ['class' => "header__menu-li ml1o25 rel $current_class"]) ?>
 			<?php endforeach; ?>
 
 			<?php if ($is_logged_in) : ?>

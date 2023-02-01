@@ -79,7 +79,7 @@ $.when($.ready).then(() => {
 	const $menu = $(pref);
 	const $lis = $<HTMLAnchorElement>(pref + '-li');
 
-	const currentLi = $lis.toArray().find((li) => li.href.includes('/' + currentPage));
+	const currentLi = $lis.toArray().find((li) => li.classList.contains('header__menu-li_current'));
 	let $currentLi;
 
 	if (!currentLi) {
