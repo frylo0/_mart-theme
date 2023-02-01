@@ -37,7 +37,7 @@ function SectionContent (
 					<?= $text ?>
 			    </div>
                
-				<?php if ($is_read_more) : ?>
+				<?php if ($is_read_more && $button_text) : ?>
 					<center>
 						<a href="<?= $button_link ?>">
 							<?php Button::Start() ?>

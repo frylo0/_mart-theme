@@ -18,7 +18,7 @@
 function Section (
 	WP_Post $section,
 	bool $is_main,
-	bool $is_reversed,
+	bool $is_image_right,
 	$attributes = []
 ) { ?>
 	<?php 
@@ -29,8 +29,6 @@ function Section (
 
 		setup_postdata($section);
 		$post = $section; // Used by ACF behind scene
-
-		$is_image_right = !$is_reversed;
 
 		$title = get_the_title();
 		$content = get_the_content();
@@ -45,7 +43,7 @@ function Section (
 		class="
 			section row rel 
 			<?= $is_main ? 'section_main' : '' ?>
-			<?= $is_image_right ? 'section_reversed' : '' ?>
+			<?= $is_image_right ? '' : 'section_reversed' ?>
 			<?= $class ?>
 		"
 		<?= $attributes ?>
