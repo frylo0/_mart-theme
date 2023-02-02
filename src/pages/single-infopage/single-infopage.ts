@@ -5,3 +5,4 @@ import './single-infopage.scss';
 
 import 'components/sections/Section/Section';
 import 'components/blocks/Contacts/Contacts';
+import 'components/blocks/RecommendedProducts/RecommendedProducts';

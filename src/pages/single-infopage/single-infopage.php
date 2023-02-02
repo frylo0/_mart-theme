@@ -6,9 +6,11 @@
 
 	<?php Devicer::Start() ?>
 		<?php Section($post, true, true) ?>
-		<!-- TODO: Add recommended products -->
+		<?php RecommendedProducts() ?>
 		<?php Contacts() ?>
 	<?php Devicer::End() ?>
+
+	<?php Footer() ?>
 </div>
 
 <?php use_footer() ?>
