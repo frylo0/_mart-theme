@@ -8,12 +8,7 @@
 
 <?php
 function Product (
-	$title,
-	$annotation_text,
-	$more_link,
-	$buy_link,
-	$price,
-	$image,
+	WP_Post $product,
 	$image_padding = 0,
 	$action_button_text = 'Купить',
 	$attributes = []
@@ -21,13 +16,31 @@ function Product (
 	<?php 
 		attributes_extract($attributes, 'class', $class);
 		attributes($attributes);
+
+		$title = get_the_title($product);
+
+		$more_link = get_the_permalink($product);
+		$buy_link = '#';
+
+		$price_normal = get_field('price_normal', $product->ID);
+		$price_sales = get_field('price_sale', $product->ID);
+
+		if ($price_sales)
+			$price = $price_sales;
+		else
+			$price = $price_normal;
+
+		$price_formatted = number_format($price, 0, ',', ' ') . ' руб';
+
+		$annotation_text = get_field('annotation_text', $product->ID);
+		$annotation_image = get_field('annotation_picture', $product->ID);
 	?>
 
 	<div class="product col <?= $class ?>" <?= $attributes ?>>
         
     	<div class="product__image-wrapper rel row jcc aic">
 			<div class="product__image w100 h100 abs ct-abs w100 h100" style="
-				background-image: url('<?= $image ?>'); 
+				background-image: url('<?= $annotation_image['url'] ?>'); 
 				width: calc(100% - 2 * <?= $image_padding ?>); 
 				height: calc(100% - 2 * <?= $image_padding ?>);
 			"></div>
@@ -57,7 +70,7 @@ function Product (
 				<?php Button::Start(['class' => 'rel']) ?>
 					<?= $action_button_text ?>
 
-    				<div class="product__price ct-abs_horiz w100"><?= $price ?></div>
+    				<div class="product__price ct-abs_horiz w100"><?= $price_formatted ?></div>
 				<?php Button::End() ?>
 			</a>
 		</div>

@@ -43,4 +43,22 @@ function select_setting(string $field) {
 	return $setting;
 }
 
+function select_recommended_products($count) {
+	// параметры по умолчанию
+	$items = get_posts([
+		'numberposts' => $count,
+		'category'    => 0,
+		'orderby'     => 'menu_order',
+		//'order'       => 'DESC',
+		//'include'     => [],
+		//'exclude'     => [],
+		//'meta_key'    => '',
+		//'meta_value'  => '',
+		'post_type'   => 'product',
+		//'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+	]);
+
+	return $items;
+}
+
 ?>

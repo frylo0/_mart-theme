@@ -16,7 +16,8 @@ function RecommendedProducts (
 		attributes_extract($attributes, 'class', $class);
 		attributes($attributes);
 
-		$products = [1, 1, 1, 1];
+		$products = select_recommended_products(4);
+
 		$more_link = site_url('/shop');
 		$more_class = implode(' ', array_map(function ($mod) {
 			return "button_$mod";
@@ -32,26 +33,7 @@ function RecommendedProducts (
     	   
     	<div class="recommended-products__content row jcc">
 			<?php foreach ($products as $product) : ?>
-				<?php Product(
-					'Длинное название',
-					'Lacus in iaculis ut ut facilisi suspendisse pharetra. 
-					Scelerisque convallis ac tellus felis mauris egestas amet, 
-					aenean urna. Scelerisque egestas sed cursus 
-					at felis urna nullam. Orci neque ultrices pretium 
-					est et lectus enim vitae pellentesque.
-					Augue cursus massa gravida et non risus tellus hac risus. 
-					Consectetur varius integer sed at pulvinar 
-					id nunc. Pulvinar laoreet neque vulputate ultricies felis.
-					Pellentesque pellentesque mattis morbi odio turpis 
-					nam. Tellus interdum scelerisque.',
-					'#',
-					'#',
-					'1250руб',
-					'https://frity.ru/sbl/jf/__php/../__assets/115.jpeg?t=1675370952',
-					0,
-					'Купить',
-					['class' => 'product_normal']
-				) ?>
+				<?php Product($product, 0, 'Купить', ['class' => 'product_normal']) ?>
 			<?php endforeach; ?>
 		</div>
     	      
