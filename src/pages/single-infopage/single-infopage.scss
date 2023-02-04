@@ -1,0 +1,46 @@
+@import '/styles/bundle.scss';
+
+.single-infopage {
+	
+}
+
+$headerHeight: calc(123 / 16 * 1rem);
+$sectionMainMT: calc(47 / 16 * 1rem);
+$sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
+
+body {
+	padding-top: $headerHeight;
+}
+
+.section {
+	margin-top: 2.5em;
+
+	@media screen and (min-width: $-stop-tablet-min ) {
+		&_main {
+			margin-top: $sectionMainMT;
+			height: $sectionMainHeight;
+
+			.section__presentation {
+
+				&-front,
+				&-back {
+					width: $sectionMainHeight;
+					height: $sectionMainHeight;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: $-stop-phone-max ) {
+		margin-top: 1em;
+		margin-bottom: 4em;
+	}
+}
+
+.contacts {
+	margin-top: px_to_em(68);
+}
+
+.recommended-products {
+	margin-top: px_to_em(68);
+}

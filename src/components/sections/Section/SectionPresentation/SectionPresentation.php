@@ -9,7 +9,7 @@
 <?php
 function SectionPresentation (
 	bool $is_main,
-	string $link,
+	mixed $link,
 	array $image,
 	array $image_pos,
 	$attributes = []

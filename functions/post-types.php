@@ -42,6 +42,48 @@ function theme_post_types() {
 		'query_var'           => true,
 	]);
 
+	register_post_type('infopage', [
+		'label'  => null,
+		'labels' => [
+			'name'               => 'Инфо страницы', // основное название для типа записи
+			'singular_name'      => 'Инфо страница', // название для одной записи этого типа
+			'add_new'            => 'Добавить страницу', // для добавления новой записи
+			'add_new_item'       => 'Добавить новую страницу', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактировать страницу', // для редактирования типа записи
+			'new_item'           => 'Новая страница', // текст новой записи
+			'view_item'          => 'Просмотреть страницу', // для просмотра записи этого типа.
+			'search_items'       => 'Найти страницу', // для поиска по этим типам записи
+			'not_found'          => 'Страницы не найдены', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => 'Нет подходящих страниц в корзине', // если не было найдено в корзине
+			'parent_item_colon'  => '', // для родителей (у древовидных типов)
+			'menu_name'          => 'Инфо страницы', // название меню
+		],
+		'description'         => 'Отвечают за конкретные информативные страницы на сайте',
+		'public'              => true,
+		'publicly_queryable'  => null, // зависит от public
+		'exclude_from_search' => null, // зависит от public
+		'show_ui'             => null, // зависит от public
+		'show_in_nav_menus'   => null, // зависит от public
+		'show_in_menu'        => true, // показывать ли в меню адмнки
+		// 'show_in_admin_bar'   => null, // зависит от show_in_menu
+		'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+		'rest_base'           => null, // $post_type. C WP 4.7
+		'menu_position'       => 40,
+		'menu_icon'           => 'dashicons-format-aside',
+		//'capability_type'   => 'post',
+		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+		'hierarchical'        => false,
+		'supports'            => ['title', 'editor', 'revisions'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+		'taxonomies'          => [],
+		'has_archive'         => false,
+		'rewrite'             => true,
+		'query_var'           => true,
+		'rewrite'             => [
+			'slug' => 'info',
+		],
+	]);
+
 	register_post_type('setting', [
 		'label'  => null,
 		'labels' => [
@@ -68,13 +110,52 @@ function theme_post_types() {
 		// 'show_in_admin_bar'   => null, // зависит от show_in_menu
 		'show_in_rest'        => true, // добавить в REST API. C WP 4.7
 		'rest_base'           => null, // $post_type. C WP 4.7
-		'menu_position'       => 40,
+		'menu_position'       => 50,
 		'menu_icon'           => 'dashicons-admin-generic',
 		//'capability_type'   => 'post',
 		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
 		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
 		'hierarchical'        => false,
 		'supports'            => ['title', 'revisions'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+		'taxonomies'          => [],
+		'has_archive'         => false,
+		'rewrite'             => true,
+		'query_var'           => true,
+	]);
+
+	register_post_type('product', [
+		'label'  => null,
+		'labels' => [
+			'name'               => 'Продукты', // основное название для типа записи
+			'singular_name'      => 'Продукт', // название для одной записи этого типа
+			'add_new'            => 'Добавить продукт', // для добавления новой записи
+			'add_new_item'       => 'Добавить новый продукт', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактировать продукт', // для редактирования типа записи
+			'new_item'           => 'Новый продукт', // текст новой записи
+			'view_item'          => 'Просмотреть продукт', // для просмотра записи этого типа.
+			'search_items'       => 'Найти продукт', // для поиска по этим типам записи
+			'not_found'          => 'Продукты не найдены', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => 'Нет подходящих продуктов в корзине', // если не было найдено в корзине
+			'parent_item_colon'  => '', // для родителей (у древовидных типов)
+			'menu_name'          => 'Продукты', // название меню
+		],
+		'description'         => 'Определяют продукты, которые предоставляет сайт',
+		'public'              => true,
+		'publicly_queryable'  => null, // зависит от public
+		'exclude_from_search' => null, // зависит от public
+		'show_ui'             => null, // зависит от public
+		'show_in_nav_menus'   => null, // зависит от public
+		'show_in_menu'        => true, // показывать ли в меню адмнки
+		// 'show_in_admin_bar'   => null, // зависит от show_in_menu
+		'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+		'rest_base'           => null, // $post_type. C WP 4.7
+		'menu_position'       => 40,
+		'menu_icon'           => 'dashicons-cart',
+		//'capability_type'   => 'post',
+		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+		'hierarchical'        => false,
+		'supports'            => ['title', 'editor', 'author', 'comments', 'revisions'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
 		'taxonomies'          => [],
 		'has_archive'         => false,
 		'rewrite'             => true,

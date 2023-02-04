@@ -31,16 +31,17 @@ function _Header (
 						<?= $header['slogan_first'] ?>
 						<?php _Link($header['slogan_second'], '#') ?>
 					</span>
+
 					<?php HeaderMenu([
-						'Главная' => '/',
-						'Обо мне' => '/about-me',
-						'О проекте' => '/about-project',
-						'Консультации психолога' => '/consult',
-						'Мероприятия' => '/event',
-						'Нумерология' => '/numerology',
-						'Магазин шпаргалок' => '/shop', 
-						'Блог' => '/blog',
-						'Контакты' => '/#contacts',
+						'Главная' => site_url('/'),
+						'Обо мне' => site_url('/info/about-me'),
+						'О проекте' => site_url('/info/about-project'),
+						'Консультации психолога' => site_url('/consult'),
+						'Мероприятия' => site_url('/event'),
+						'Нумерология' => site_url('/numerology'),
+						'Магазин шпаргалок' => site_url('/shop'), 
+						'Блог' => site_url('/blog'),
+						'Контакты' => site_url('/#contacts'),
 					]) ?>
 				</div>
 			</div>
