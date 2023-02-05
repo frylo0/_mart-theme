@@ -87,5 +87,8 @@ function theme_taxonomies() {
 
 function theme_use_taxonomies() {
 	register_taxonomy_for_object_type('product-type', 'product');
+
 	register_taxonomy_for_object_type('theme', 'product');
+	register_taxonomy_for_object_type('theme', 'service');
+	register_taxonomy_for_object_type('theme', 'service-type');
 }

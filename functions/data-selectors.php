@@ -61,4 +61,40 @@ function select_recommended_products($count) {
 	return $items;
 }
 
+function select_consult_types() {
+	// параметры по умолчанию
+	$items = get_posts([
+		'numberposts' => 0,
+		'category'    => 0,
+		'orderby'     => 'menu_order',
+		//'order'       => 'DESC',
+		//'include'     => [],
+		//'exclude'     => [],
+		//'meta_key'    => '',
+		//'meta_value'  => '',
+		'post_type'   => 'service-type',
+		//'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+	]);
+
+	return $items;
+}
+
+function select_consult_list() {
+	// параметры по умолчанию
+	$items = get_posts([
+		'numberposts' => 0,
+		'category'    => 0,
+		'orderby'     => 'menu_order',
+		//'order'       => 'DESC',
+		//'include'     => [],
+		//'exclude'     => [],
+		//'meta_key'    => '',
+		//'meta_value'  => '',
+		'post_type'   => 'service',
+		//'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+	]);
+
+	return $items;
+}
+
 ?>

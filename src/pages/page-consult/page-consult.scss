@@ -1,3 +1,136 @@
-.page-consult {
-	
+@import '/styles/bundle.scss';
+
+$headerHeight: calc(123 / 16 * 1rem);
+$sectionMainMT: calc(47 / 16 * 1rem);
+$sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
+
+.title {
+	&_consult-types {
+		margin-top: 14rem;
+		margin-bottom: px_to_rem(55);
+
+		@media screen and (max-width: $-stop-tablet-min ) {
+			margin-top: 7em;
+			margin-bottom: 1em;
+		}
+
+		@media screen and (max-width: 410px) {
+			margin-top: 6em;
+		}
+	}
+
+	&_services {
+		margin-top: px_to_rem(83);
+		margin-bottom: px_to_rem(55);
+
+		@media screen and (max-width: $-stop-tablet-min ) {
+			margin-top: px_to_em(41);
+			margin-bottom: 2em;
+		}
+
+		@media screen and (max-width: 480px) {
+			margin-bottom: 1.5em;
+		}
+	}
+}
+
+.product {
+	$gutter: px_to_em(36);
+	$size: px_to_em(232);
+	$imageFactor: 1;
+
+	margin-right: $gutter;
+	width: $size;
+
+	&__image {
+		height: $size * $imageFactor;
+		width: $size * $imageFactor;
+	}
+
+	&:last-child {
+		margin-right: 0;
+	}
+
+	@media screen and (max-width: $-stop-tablet-min ) {
+		margin: calc($gutter / 2);
+
+		&:last-child {
+			margin-right: calc($gutter / 2);
+		}
+	}
+
+	@media screen and (max-width: 460px) {
+		margin: 0.75em;
+
+		&:last-child {
+			margin-right: 0.75em;
+		}
+	}
+
+	@media screen and (max-width: 620px) {
+
+		&_normal.product,
+		&_normal.product &__image-wrapper {
+			$size: px_to_em(210);
+			width: $size;
+
+			div.product__image {
+				height: $size * $imageFactor;
+				width: $size * $imageFactor;
+			}
+		}
+	}
+}
+
+.services {
+	columns: 2;
+	column-gap: px_to_em(74);
+
+	@media screen and (max-width: $-stop-tablet-min ) {
+		column-gap: px_to_em(45);
+	}
+
+	@media screen and (max-width: 880px) {
+		column-count: 1;
+	}
+
+	.service-row {
+		-webkit-column-break-inside: avoid;
+		page-break-inside: avoid;
+		break-inside: avoid;
+
+		margin-bottom: px_to_em(8);
+
+		@media screen and (max-width: 480px) {
+			&__title {
+				padding-right: 1.75em;
+				width: 60%;
+				max-width: calc(100% - 100px);
+			}
+
+			&__info {
+				flex-direction: column-reverse;
+				margin-bottom: 3px;
+				width: 40%;
+				min-width: 100px;
+			}
+
+			&__button {
+				width: 100%;
+			}
+
+			&__price {
+				width: 100%;
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+.footer {
+	margin-top: px_to_em(80);
+
+	@media screen and (max-width: $-stop-tablet-min ) {
+		margin-top: 2em;
+	}
 }

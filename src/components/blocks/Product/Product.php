@@ -11,6 +11,7 @@ function Product (
 	WP_Post $product,
 	$image_padding = 0,
 	$action_button_text = 'Купить',
+	$price_text = '',
 	$attributes = []
 ) { ?>
 	<?php 
@@ -30,7 +31,10 @@ function Product (
 		else
 			$price = $price_normal;
 
-		$price_formatted = number_format($price, 0, ',', ' ') . ' руб';
+		if ($price_text)
+			$price_formatted = $price_text;
+		else
+			$price_formatted = number_format($price, 0, ',', ' ') . ' руб';
 
 		$annotation_text = get_field('annotation_text', $product->ID);
 		$annotation_image = get_field('annotation_picture', $product->ID);
