@@ -161,4 +161,82 @@ function theme_post_types() {
 		'rewrite'             => true,
 		'query_var'           => true,
 	]);
+
+	register_post_type('service', [
+		'label'  => null,
+		'labels' => [
+			'name'               => 'Услуги', // основное название для типа записи
+			'singular_name'      => 'Услуга', // название для одной записи этого типа
+			'add_new'            => 'Добавить услугу', // для добавления новой записи
+			'add_new_item'       => 'Добавить новую услугу', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактировать услугу', // для редактирования типа записи
+			'new_item'           => 'Новая услуга', // текст новой записи
+			'view_item'          => 'Просмотреть услугу', // для просмотра записи этого типа.
+			'search_items'       => 'Найти услугу', // для поиска по этим типам записи
+			'not_found'          => 'Услуги не найдены', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => 'Нет подходящих услуг в корзине', // если не было найдено в корзине
+			'parent_item_colon'  => '', // для родителей (у древовидных типов)
+			'menu_name'          => 'Услуги', // название меню
+		],
+		'description'         => 'Определяют услуги, представленные на странице "Консультации психолога"',
+		'public'              => true,
+		'publicly_queryable'  => null, // зависит от public
+		'exclude_from_search' => null, // зависит от public
+		'show_ui'             => null, // зависит от public
+		'show_in_nav_menus'   => null, // зависит от public
+		'show_in_menu'        => true, // показывать ли в меню адмнки
+		// 'show_in_admin_bar'   => null, // зависит от show_in_menu
+		'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+		'rest_base'           => null, // $post_type. C WP 4.7
+		'menu_position'       => 40,
+		'menu_icon'           => 'dashicons-money-alt',
+		//'capability_type'   => 'post',
+		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+		'hierarchical'        => false,
+		'supports'            => ['title', 'editor', 'author', 'comments', 'revisions'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+		'taxonomies'          => [],
+		'has_archive'         => false,
+		'rewrite'             => true,
+		'query_var'           => true,
+	]);
+
+	register_post_type('service-type', [
+		'label'  => null,
+		'labels' => [
+			'name'               => 'Типы услуг', // основное название для типа записи
+			'singular_name'      => 'Тип услуги', // название для одной записи этого типа
+			'add_new'            => 'Добавить тип', // для добавления новой записи
+			'add_new_item'       => 'Добавить новый тип', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактировать тип', // для редактирования типа записи
+			'new_item'           => 'Новый тип', // текст новой записи
+			'view_item'          => 'Просмотреть тип', // для просмотра записи этого типа.
+			'search_items'       => 'Найти тип', // для поиска по этим типам записи
+			'not_found'          => 'Типы услуг не найдены', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => 'Нет подходящих типов в корзине', // если не было найдено в корзине
+			'parent_item_colon'  => '', // для родителей (у древовидных типов)
+			'menu_name'          => 'Типы услуг', // название меню
+		],
+		'description'         => 'Определяют типы услуги, представленные на странице "Консультации психолога"',
+		'public'              => true,
+		'publicly_queryable'  => null, // зависит от public
+		'exclude_from_search' => null, // зависит от public
+		'show_ui'             => null, // зависит от public
+		'show_in_nav_menus'   => null, // зависит от public
+		'show_in_menu'        => true, // показывать ли в меню адмнки
+		// 'show_in_admin_bar'   => null, // зависит от show_in_menu
+		'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+		'rest_base'           => null, // $post_type. C WP 4.7
+		'menu_position'       => 40,
+		'menu_icon'           => 'dashicons-tickets',
+		//'capability_type'   => 'post',
+		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+		'hierarchical'        => false,
+		'supports'            => ['title', 'editor', 'author', 'comments', 'revisions'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+		'taxonomies'          => [],
+		'has_archive'         => false,
+		'rewrite'             => true,
+		'query_var'           => true,
+	]);
 }

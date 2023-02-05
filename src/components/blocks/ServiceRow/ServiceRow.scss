@@ -1,0 +1,42 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-02-05, 10:54:25 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+.service-row {
+	&__title {
+		width: 50%;
+		color: $-c6;
+		text-decoration-color: transparent;
+		margin-top: 0.34rem;
+		transition: text-decoration-color 0.5s;
+	}
+
+	&__info {
+		width: 50%;
+		display: flex;
+	}
+
+	&__price {
+		font-size: px_to_em(12);
+		width: 50%;
+		text-align: center;
+		font-style: italic;
+		white-space: pre-wrap;
+		padding: 0 0.75em;
+		margin-top: 0.34rem;
+	}
+
+	&__button {
+		width: 50%;
+	}
+
+	&:hover {
+		.service-row__title {
+			text-decoration-color: $-c6;
+		}
+	}
+}
