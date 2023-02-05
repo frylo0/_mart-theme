@@ -33,7 +33,7 @@ function RecommendedProducts (
     	   
     	<div class="recommended-products__content row jcc">
 			<?php foreach ($products as $product) : ?>
-				<?php Product($product, 0, 'Купить', ['class' => 'product_normal']) ?>
+				<?php Product($product, 0, 'Купить', '', ['class' => 'product_normal']) ?>
 			<?php endforeach; ?>
 		</div>
     	      
