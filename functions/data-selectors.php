@@ -97,4 +97,22 @@ function select_consult_list() {
 	return $items;
 }
 
+function select_events() {
+	// параметры по умолчанию
+	$items = get_posts([
+		'numberposts' => 0,
+		'category'    => 0,
+		'orderby'     => 'menu_order',
+		//'order'       => 'DESC',
+		//'include'     => [],
+		//'exclude'     => [],
+		//'meta_key'    => '',
+		//'meta_value'  => '',
+		'post_type'   => 'event',
+		//'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+	]);
+
+	return $items;
+}
+
 ?>
