@@ -104,7 +104,7 @@
 
 			.button {
 				border-radius: 5px 5px 0 0;
-				color: color.scale($-c3, $lightness: -20%);
+				color: $-c7;
 
 				@media screen and (max-width: $-stop-mobile ) {
 					border-radius: 5px 0 0 5px;
