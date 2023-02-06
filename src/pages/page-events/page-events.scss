@@ -1,0 +1,40 @@
+@import '/styles/bundle.scss';
+
+$headerHeight: calc(123 / 16 * 1rem);
+$sectionMainMT: calc(47 / 16 * 1rem);
+$sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
+
+body {
+	padding-top: $headerHeight;
+}
+
+.title {
+	&_events {
+		margin-top: 4em;
+		margin-bottom: px_to_em(20);
+
+		@media screen and (max-width: $-stop-tablet-min ) {
+			margin-top: 2.5em;
+		}
+
+		@media screen and (max-width: 425px) {
+			margin-top: 2em;
+		}
+
+		@media screen and (max-width: 410px) {
+			margin-top: 1.5em;
+		}
+	}
+}
+
+#contacts .title {
+	margin-bottom: px_to_em(20);
+}
+
+.event-block {
+	margin-top: px_to_em(18);
+}
+
+.contacts {
+	margin-top: px_to_em(68);
+}
