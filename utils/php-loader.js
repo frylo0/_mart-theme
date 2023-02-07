@@ -90,9 +90,7 @@ function imports(content) {
 			.replace(new RegExp('^' + quote), '')
 			.replace(new RegExp(quote + ';.*$'), '');
 		
-		const dump = d => console.log(...(Object.entries(d).map(([n, v], i, arr) => [i !== 0 ? '\n' : '', `• ${n} =`, v])).reduce((p, c) => p.concat(c)));
-		dump({importPath});
-		const allowed = /^(components|pages|\.)\//.test(importPath);
+		const allowed = /^(components|pages|\.|\.\.)\//.test(importPath);
 
 		if (!endsWithExt && allowed) { // if is imported ts file - possible dependency
 			if (/^\w/.test(importPath)) { // if starts with letter, not relative import
