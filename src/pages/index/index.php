@@ -13,7 +13,7 @@
 			<?php Section($section, $is_main, $is_image_right) ?>
 		<?php endforeach; ?>
 
-		<?php Contacts() ?>
+		<?php Contacts(['id' => 'contacts']) ?>
 	<?php Devicer::End() ?>
 
 	<?php Footer() ?>
