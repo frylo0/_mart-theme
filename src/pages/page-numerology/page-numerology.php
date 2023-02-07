@@ -12,21 +12,21 @@
 			return substr($string, 0, strlen($beginning)) === $beginning;
 		};
 
-		$sections_consult = array_filter($sections, function ($section) {
-			return starts_with(
-				get_the_title($section), 
-				'Консультации'
-			);
-		});
-		$sections_study = array_filter($sections, function ($section) {
-			return starts_with(
-				get_the_title($section), 
-				'Обучение'
-			);
-		});
+		$sections_consult = [];
+		$sections_study = [];
 
-		$consult_target = $sections_consult[0]->post_title;
-		$study_target = $sections_study[0]->post_title;
+		foreach ($sections as $section) {
+			$title = get_the_title($section);
+
+			if (starts_with($title, 'Консультации')) {
+				$sections_consult[] = $section;
+			} else if (starts_with($title, 'Обучение')) {
+				$sections_study[] = $section;
+			}
+		}
+
+		$target_consult = get_the_title($sections_consult[0]);
+		$target_study = get_the_title($sections_study[0]);
 	?>
 
 	<?php _Header() ?>
@@ -41,7 +41,7 @@
 
     		<div class="numero-menu__content">
     			<div class="numero-submenu col aic">
-    				<div class="numero-subtitle numenu-item__trigger cup" data-target="<?= $consult_target ?>">
+    				<div class="numero-subtitle numenu-item__trigger cup" data-target="<?= $target_consult ?>">
 						Консультации
 					</div>
 					<?php foreach ($sections_consult as $section) : ?>
@@ -50,7 +50,7 @@
 				</div>
 
     			<div class="numero-submenu col aic">
-    				<div class="numero-subtitle numenu-item__trigger cup" data-target="<?= $consult_target ?>">
+    				<div class="numero-subtitle numenu-item__trigger cup" data-target="<?= $target_study ?>">
 						Обучение
 					</div>
 					<?php foreach ($sections_study as $section) : ?>
