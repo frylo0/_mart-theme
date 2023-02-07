@@ -2,10 +2,6 @@
 
 <div class="page page-numerology">
 	<?php
-		// FIXME: Image plus do not work
-		// FIXME: Video has plus
-		// FIXME: <figure> and <figcaption> wordpress css bugs
-
 		$sections = select_numerology_sections();
 
 		function starts_with($string, $beginning) {

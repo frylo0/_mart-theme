@@ -5,3 +5,5 @@ import './page-numerology.scss';
 
 import 'components/blocks/numerology/NumenuItem/NumenuItem';
 import 'components/blocks/numerology/NumeroSection/NumeroSection';
+
+import 'components/blocks/WpBlockImage/WpBlockImage';
