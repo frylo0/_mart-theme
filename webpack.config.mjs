@@ -102,8 +102,7 @@ const config = ({ isDevelopment, isProduction, isMode }) => ({
                 }],
             },
             {
-                test: /\.(scss|sass)$/,
-                exclude: /node_modules/,
+                test: /\.(scss|sass|css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
