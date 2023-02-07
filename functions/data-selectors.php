@@ -115,4 +115,22 @@ function select_events() {
 	return $items;
 }
 
+function select_numerology_sections() {
+	// параметры по умолчанию
+	$items = get_posts([
+		'numberposts' => 0,
+		'category'    => 0,
+		'orderby'     => 'menu_order',
+		//'order'       => 'DESC',
+		//'include'     => [],
+		//'exclude'     => [],
+		//'meta_key'    => '',
+		//'meta_value'  => '',
+		'post_type'   => 'numerology-section',
+		//'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+	]);
+
+	return $items;
+}
+
 ?>
