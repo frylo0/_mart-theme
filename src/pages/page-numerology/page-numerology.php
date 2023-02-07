@@ -2,7 +2,6 @@
 
 <div class="page page-numerology">
 	<?php
-		// FIXME: Menu links do not work
 		// FIXME: Image plus do not work
 		// FIXME: Video has plus
 		// FIXME: <figure> and <figcaption> wordpress css bugs
@@ -25,6 +24,9 @@
 				'Обучение'
 			);
 		});
+
+		$consult_target = $sections_consult[0]->post_title;
+		$study_target = $sections_study[0]->post_title;
 	?>
 
 	<?php _Header() ?>
@@ -39,7 +41,7 @@
 
     		<div class="numero-menu__content">
     			<div class="numero-submenu col aic">
-    				<div class="numero-subtitle numenu-item__trigger cup" data-target="consult-conversation">
+    				<div class="numero-subtitle numenu-item__trigger cup" data-target="<?= $consult_target ?>">
 						Консультации
 					</div>
 					<?php foreach ($sections_consult as $section) : ?>
@@ -48,7 +50,7 @@
 				</div>
 
     			<div class="numero-submenu col aic">
-    				<div class="numero-subtitle numenu-item__trigger cup" data-target="study">
+    				<div class="numero-subtitle numenu-item__trigger cup" data-target="<?= $consult_target ?>">
 						Обучение
 					</div>
 					<?php foreach ($sections_study as $section) : ?>

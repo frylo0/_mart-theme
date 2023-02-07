@@ -7,13 +7,12 @@
 ?>
 
 <?php
-function Diashad(
+function Diashad($attributes = []) { return function (
 	$opacity,
 	$marginTop = 0,
 	$inverse = false,
 	$rotation = 7.1,
-	$attributes = []
-) { ?>
+) use ($attributes) { ?>
 	<?php 
 		attributes_extract($attributes, 'class', $class);
 		attributes($attributes);
@@ -31,4 +30,4 @@ function Diashad(
 			margin-top: <?= $marginTop ?>em;
 		"></div>
 	</div>
-<?php } ?>
+<?php };} ?>

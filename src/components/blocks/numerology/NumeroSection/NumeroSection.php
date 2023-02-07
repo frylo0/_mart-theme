@@ -6,10 +6,10 @@
  */
 
 function NumeroSection($attributes = []) {
-	return function (
-		WP_Post $section,
-	) use ($attributes) { ?>
-		<?php
+return function (
+	WP_Post $section,
+) use ($attributes) { ?>
+	<?php
 		attributes_extract($attributes, 'class', $class);
 		attributes($attributes);
 
@@ -36,41 +36,48 @@ function NumeroSection($attributes = []) {
 				array_push($shadows_visible, $shadow);
 			}
 		}
-		?>
 
-		<?php Title($section_title, [
-			'id' => $link,
-			'class' => 'numero-content-title',
-		]) ?>
+		$menu_target = $post_title;
+	?>
 
-		<div class="numero-section <?= $class ?>" data-json="" <?= $attributes ?>>
-			<?= $content ?>
+	<?php Title($section_title, [
+		'id' => $link,
+		'class' => 'numero-content-title',
+	]) ?>
 
-			<p class="numero-section__action">
-				<span style="color: #e16a59">
-					Запишитесь на консультацию прямо сейчас:
-				</span>
+	<div
+		class="numero-section <?= $class ?>" 
+		id="<?= $menu_target ?>"
+		data-json="" 
+		<?= $attributes ?>
+	>
+		<?= $content ?>
 
-				воспользуйтесь
-				<a href="<?= $contacts_link ?>" style="color: black">контактами психолога</a>
+		<p class="numero-section__action">
+			<span style="color: #e16a59">
+				Запишитесь на консультацию прямо сейчас:
+			</span>
 
-				или
-				<a href="<?= $enroll_link ?>">
-					<?php Button::Start(['style' => 'padding-left: 0.5em; padding-right: 0.5em']) ?>
-					запишитесь на сайте
-					<?php Button::End() ?>
-				</a>
-			</p>
-		</div>
+			воспользуйтесь
+			<a href="<?= $contacts_link ?>" style="color: black">контактами психолога</a>
 
-		<?php foreach ($shadows_visible as $shadow) : ?>
-			<?php Diashad()(
-				$shadow['opacity'],
-				$shadow['margin_top'],
-				$shadow['inverse'],
-				$shadow['rotation'],
-			) ?>
-		<?php endforeach; ?>
+			или
+			<a href="<?= $enroll_link ?>">
+				<?php Button::Start(['style' => 'padding-left: 0.5em; padding-right: 0.5em']) ?>
+				запишитесь на сайте
+				<?php Button::End() ?>
+			</a>
+		</p>
+	</div>
+
+	<?php foreach ($shadows_visible as $shadow) : ?>
+		<?php Diashad()(
+			$shadow['opacity'],
+			$shadow['margin_top'],
+			$shadow['inverse'],
+			$shadow['rotation'],
+		) ?>
+	<?php endforeach; ?>
 
 <?php };
 }

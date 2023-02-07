@@ -22,7 +22,7 @@ function NumenuItem ($attributes = []) { return function (
 		$title = $is_visible ? $matches[1] : '';
 		$icon = get_field('icon', $section->ID);
 		
-		$target = '';
+		$target = $post_title;
 	?>
 	
 	<?php if ($is_visible) : ?>
