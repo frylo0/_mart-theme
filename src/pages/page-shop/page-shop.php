@@ -1,7 +1,15 @@
 <?php use_header() ?>
 
 <div class="page page-shop">
-	PageShop
+	<?php _Header() ?>
+	<?php ScrollTopButton() ?>
+
+	<?php Devicer::Start() ?>
+		<?php Title('Магазин шпаргалок', ['class' => 'title_page']) ?>
+
+		<?php ShopFilters()() ?>
+		<?php ShopProducts()() ?>
+	<?php Devicer::End() ?>
 </div>
 
 <?php use_footer() ?>
