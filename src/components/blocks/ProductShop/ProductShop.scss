@@ -1,0 +1,170 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-03-19, 7:19:44 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+$product-shop-size: px_to_em(496);
+
+.product-shop {
+	$size: $product-shop-size;
+	$gutter-middle: px_to_em(24);
+	width: $size;
+
+	$stop1: 1140px;
+
+	@media screen and (max-width: $stop1) {
+		flex-direction: column;
+		width: calc($size / 2 - $gutter-middle / 2);
+	}
+
+	&__sales-badge {
+		font-size: px_to_em(20);
+		top: px_to_em(-21, 20);
+		left: px_to_em(-26, 20);
+		$badge-size: px_to_em(87, 20);
+		width: $badge-size;
+		height: $badge-size;
+		border-radius: 50%;
+		transform: rotate(-15deg);
+		background: #F05757;
+		color: $-c1;
+		font-family: var(--f-rlw-r);
+		z-index: 10;
+		user-select: none;
+	}
+
+	&__card {
+		width: calc($size / 2 - $gutter-middle / 2);
+		margin-right: $gutter-middle;
+
+		@media screen and (max-width: $stop1 ) {
+			margin-right: 0;
+		}
+	}
+
+	&__image {
+		height: px_to_em(224);
+		border-radius: 5px;
+		overflow: hidden;
+		margin-bottom: px_to_em(25);
+	}
+
+	&__creation-date {
+		$margin: 0.5em;
+		left: $margin;
+		bottom: $margin;
+		font-family: var(--ff-rlw-r);
+		font-size: px_to_em(14);
+
+		@media screen and (max-width: $stop1 ) {
+			text-align: center;
+			left: 0;
+			right: 0;
+		}
+	}
+
+	&__title {
+		font-family: var(--f-ars-b);
+		font-size: px_to_em(24);
+
+		@media screen and (max-width: $stop1 ) {
+			text-align: center;
+		}
+	}
+
+	&__type {
+		font-family: var(--f-ars-b);
+		font-size: px_to_em(13);
+		margin-top: px_to_em(7, 13);
+
+		@media screen and (max-width: $stop1 ) {
+			text-align: center;
+		}
+	}
+
+	&__price-block {
+		margin-top: 0.15em;
+
+		@media screen and (max-width: $stop1 ) {
+			text-align: center;
+			justify-content: center;
+		}
+	}
+
+	&__price {
+		font-family: var(--f-rlw-r);
+		letter-spacing: 0.2em;
+		font-size: px_to_em(13);
+		margin-bottom: px_to_em(20, 13);
+
+		&_sales {
+			font-family: var(--f-rlw-r);
+			font-size: px_to_em(13);
+			color: red;
+			margin-bottom: px_to_em(20, 13);
+			margin-right: px_to_em(10, 13);
+		}
+
+		&_before {
+			font-family: var(--f-rlw-r);
+			font-size: px_to_em(11);
+			text-decoration: line-through;
+		}
+	}
+
+	&__controls {
+		a {
+			text-decoration: none;
+		}
+	}
+
+	&__button-read-more {
+		margin-right: px_to_em(4.5);
+		width: calc(50% - #{px_to_em(4.5)});
+	}
+
+	&__button-buy {
+		background-color: $-c3;
+		width: calc(50% - #{px_to_em(4.5)});
+	}
+
+	&__button-read-only {
+		width: 100%;
+	}
+
+	&__content {
+		width: calc($size / 2 - $gutter-middle / 2);
+	}
+
+	&__tags {
+		width: calc(100% + #{px_to_em(5)});
+		margin-bottom: px_to_em(18);
+
+		@media screen and (max-width: $stop1 ) {
+			margin-top: px_to_em(18);
+		}
+	}
+
+	&__tag {
+		color: $-c6;
+
+		&::before {
+			content: '#';
+			color: $-c4;
+		}
+	}
+
+	&__description {
+		p {
+			margin-top: 0;
+			margin-bottom: px_to_em(10);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

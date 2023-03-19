@@ -15,6 +15,10 @@ class UrlQuery {
 		$this->query = self::decode();
 	}
 
+	public function reset() {
+		$this->query = [];
+	}
+
 	public function set($key, $value) {
 		$this->query[$key] = $value;
 	}
