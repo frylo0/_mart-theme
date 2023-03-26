@@ -6,14 +6,12 @@
 
 @import '/styles/bundle.scss';
 
-$product-shop-size: px_to_em(496);
-
 .product-shop {
 	$size: $product-shop-size;
 	$gutter-middle: px_to_em(24);
-	width: $size;
-
 	$stop1: 1140px;
+
+	width: $size;
 
 	@media screen and (max-width: $stop1) {
 		flex-direction: column;

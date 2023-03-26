@@ -200,4 +200,27 @@ function select_shop_products(string $price, string $theme, string $format) {
 	return $items_price_filtered;
 }
 
-?>
+function select_blog_themes() {
+	$items = get_terms([
+		'taxonomy' => 'theme',
+		'hide_empty' => false,
+	]);
+
+	return $items;
+}
+
+function select_blog_posts() {
+	$items = get_posts([
+		'numberposts' => 2,
+		'category'    => 0,
+		'orderby'     => 'menu_order',
+		//'order'       => 'DESC',
+		//'include'     => [],
+		//'exclude'     => [],
+		'post_type'   => 'post',
+		//'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+		'meta_query' => [],
+	]);
+
+	return $items;
+}

@@ -26,8 +26,33 @@ $-c5-50: transparentize($-c5, 0.50);
 $-c6-50: transparentize($-c6, 0.50);
 // </Colors>
 
+// PAGE
+
 $headerHeight: calc(123 / 16 * 1rem);
 $headerLogoWidth: calc(307 / 16 * 1em);
 $sectionMainMT: calc(47 / 16 * 1rem);
 $sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
 $select-row-size: calc(27 / 16 * 1em);
+
+// CYLINDER
+
+$cylinder-sides-count: 10;
+$cylinder-forwardness: 1.5vw;
+$cylinder-size-factor: 3;
+
+$cylinder-start-position--rotate-x: 0deg;
+$cylinder-start-position--rotate-y: calc(1deg * (90 + 360 / $cylinder-sides-count / 2));
+$cylinder-start-position--rotate-z: 0deg;
+
+$cylinder-start-position--translate-x: -125px;
+$cylinder-start-position--translate-y: 0px;
+$cylinder-start-position--translate-z: 0px;
+
+$cylinder-side-height: fit-content;
+$cylinder-side-width: calc(90vw * $cylinder-size-factor / $cylinder-sides-count);
+
+// COMPONENTS
+
+$product-shop-size: calc(496 / 14 * 1em);
+$blog-articles-margin: calc(50 / 14 * 1em);
+
