@@ -2,6 +2,9 @@
 
 <?php 
 	$themes = select_blog_themes();
+
+	//$themes = [...$themes, ...$themes, ...$themes];
+	//$themes_count = min(count($themes), isset($_GET['themes-count']) ? $_GET['themes-count'] : 1000);
 	
 	$cylinder_sides = [[],[],[],[],[]];
 
@@ -10,8 +13,8 @@
 		array_push($cylinder_sides[$col], $themes[$i]);
 	}
 
-	$posts_popular = select_blog_posts();
-	$posts_recent = select_blog_posts();
+	$posts_popular = select_blog_posts_popular();
+	$posts_recent = select_blog_posts_recent();
 ?>
 
 <div class="page page-blog">

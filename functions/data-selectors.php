@@ -209,11 +209,28 @@ function select_blog_themes() {
 	return $items;
 }
 
-function select_blog_posts() {
+function select_blog_posts_recent() {
 	$items = get_posts([
 		'numberposts' => 2,
 		'category'    => 0,
-		'orderby'     => 'menu_order',
+		'orderby'     => 'date',
+		//'order'       => 'DESC',
+		//'include'     => [],
+		//'exclude'     => [],
+		'post_type'   => 'post',
+		//'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+		'meta_query' => [],
+	]);
+
+	return $items;
+}
+
+function select_blog_posts_popular() {
+	$items = get_posts([
+		'numberposts' => 2,
+		'category'    => 0,
+		'orderby'     => 'meta_value',
+		'meta_key'    => 'view_count',
 		//'order'       => 'DESC',
 		//'include'     => [],
 		//'exclude'     => [],
