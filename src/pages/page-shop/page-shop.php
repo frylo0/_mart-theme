@@ -10,6 +10,8 @@
 		<?php ShopFilters()() ?>
 		<?php ShopProducts()() ?>
 	<?php Devicer::End() ?>
+
+	<?php Footer() ?>
 </div>
 
 <?php use_footer() ?>

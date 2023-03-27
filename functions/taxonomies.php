@@ -91,4 +91,7 @@ function theme_use_taxonomies() {
 	register_taxonomy_for_object_type('theme', 'product');
 	register_taxonomy_for_object_type('theme', 'service');
 	register_taxonomy_for_object_type('theme', 'service-type');
+
+	unregister_taxonomy_for_object_type('category', 'post');
+	unregister_taxonomy_for_object_type('post_tag', 'post');
 }

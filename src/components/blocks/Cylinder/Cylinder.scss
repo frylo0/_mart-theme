@@ -1,0 +1,102 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-03-26, 5:00:35 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+.cylinder {
+	$sides-count: $cylinder-sides-count;
+	$forwardness: $cylinder-forwardness;
+	$size-factor: $cylinder-size-factor;
+
+	$start-position--rotate-x: $cylinder-start-position--rotate-x;
+	$start-position--rotate-y: $cylinder-start-position--rotate-y;
+	$start-position--rotate-z: $cylinder-start-position--rotate-z;
+
+	$start-position--translate-x: $cylinder-start-position--translate-x;
+	$start-position--translate-y: $cylinder-start-position--translate-y;
+	$start-position--translate-z: $cylinder-start-position--translate-z;
+
+	$side-height: $cylinder-side-height;
+	$side-width: $cylinder-side-width;
+
+
+	.cylinder-container {
+		$perspective: 900;
+
+		text-align: center;
+		margin: 0 auto;
+		top: 450px;
+		width: 550px;
+		perspective: $perspective;
+		-moz-perspective: $perspective * 1px;
+		-webkit-perspective: $perspective;
+
+		&:hover * {
+			animation-play-state: paused;
+		}
+	}
+
+	.cylinder-frame {
+		width: 1px;
+		margin: auto;
+		height: $side-height;
+		transform-style: preserve-3d;
+		transform: 
+			rotateX(#{$start-position--rotate-x})
+			rotateY(#{$start-position--rotate-y}) 
+			rotateZ(#{$start-position--rotate-z});
+	}
+
+	.strip {
+		transform-style: preserve-3d;
+		transform: translate3d(
+			#{$start-position--translate-x}, 
+			#{$start-position--translate-y}, 
+			#{$start-position--translate-z}
+		);
+
+		> div {
+			position: absolute;
+			height: $side-height;
+			width: $side-width;
+		}
+
+		$i: 0;
+		$x-max: 792px * $size-factor;
+		$x-step: calc($x-max / $sides-count);
+		$deg-max: 360deg;
+		$deg-step: calc($deg-max / $sides-count);
+
+		@while $i < $sides-count {
+			.cylinder-l-#{$i} {
+				transform-style: preserve-3d;
+				transform:
+					rotateY(#{0deg + ( $i * $deg-step )}) 
+					translateZ(#{(13vw + $forwardness) * $size-factor});
+
+				@if $i < 5 {}
+				@else {
+				   display: none
+				}
+
+				> div {
+					transform-style: preserve-3d;
+				}
+			}
+
+			$i: $i + 1;
+		}
+	}
+}
+
+@keyframes spin {
+	from {
+		transform: rotateY(0);
+	}
+	to {
+		transform: rotateY(360deg);
+	}
+}
