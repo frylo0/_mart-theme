@@ -27,7 +27,7 @@ const CYLINDER_CONFIG = {
 	RENDER: {
 		RATE: 10, // Time in ms for setInterval
 		PERSPECTIVE: 0.58, // Magic number representing fraction between heights of the most far and the nearest sides
-		MARGIN_TOP: -100, // Control the Y shift of cylinder content
+		VERTICAL_NORMALIZER_FACTOR: 0.13, // Magic number, used to normalize position of cylinder within wrapper
 	},
 	COLUMNS: 10, // Total number of columns (visible and free). This number used to calculate start rotation
 };
@@ -38,6 +38,7 @@ class CylinderManager {
 	private $cylinder: JQuery;
 
 	private cylinder: HTMLDivElement;
+	private wrapper: HTMLDivElement;
 	private frame: HTMLDivElement;
 	private container: HTMLDivElement;
 	private strip: HTMLDivElement;
@@ -53,6 +54,7 @@ class CylinderManager {
 
 		this.cylinder = cylinder;
 
+		this.wrapper = this.cylinder.parentElement as HTMLDivElement;
 		this.frame = this.$cylinder.find('.cylinder-frame').get(0) as HTMLDivElement;
 		this.container = this.$cylinder.find('.cylinder-container').get(0) as HTMLDivElement;
 		this.strip = this.$cylinder.find('.strip').get(0) as HTMLDivElement;
@@ -94,6 +96,9 @@ class CylinderManager {
 		this.container.style.transform = `
 			translate(${this.containerShift.x}px, ${this.containerShift.y}px)
 		`;
+
+		this.wrapper.style.marginTop = `calc(-${this.wrapperShift.y}px)`;
+		this.wrapper.style.marginBottom = `calc(${this.wrapperShift.y}px)`;
 	}
 
 	private get contentHeight(): number {
@@ -105,7 +110,8 @@ class CylinderManager {
 	}
 
 	private fitContentHeight() {
-		this.frame.style.height = `${this.contentHeight}px`;
+		const perspective = CYLINDER_CONFIG.RENDER.PERSPECTIVE;
+		this.frame.style.height = `${this.contentHeight * perspective}px`;
 	}
 
 	private renewScrollPosition() {
@@ -144,11 +150,19 @@ class CylinderManager {
 
 	private get containerShift(): Point {
 		const perspective = CYLINDER_CONFIG.RENDER.PERSPECTIVE;
-		const marginTop = CYLINDER_CONFIG.RENDER.MARGIN_TOP;
 
 		return {
 			x: 0,
-			y: -1 * this.scrollPosition.y * perspective + marginTop,
+			y: -1 * this.scrollPosition.y * perspective,
+		};
+	}
+
+	private get wrapperShift(): Point {
+		const factor = CYLINDER_CONFIG.RENDER.VERTICAL_NORMALIZER_FACTOR;
+
+		return {
+			x: 0,
+			y: this.contentHeight * factor,
 		};
 	}
 

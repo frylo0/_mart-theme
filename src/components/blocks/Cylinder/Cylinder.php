@@ -18,21 +18,23 @@ function Cylinder ($attributes = []) { return function (
 		$i = 0;
 	?>
 
-	<div class="cylinder <?= $class ?>" <?= $attributes ?>>
-		<div class="cylinder-container">
-			<div class="cylinder-frame">
-				<div class="strip">
-					<?php while ($i < $max) : ?>
-						<div class="cylinder-l cylinder-l-<?= $i ?>">
-							<?php if (isset($sides[$i])) {
-								$sides[$i]();
-							} ?>
-						</div>
-						<?php $i++; ?>
-					<?php endwhile; ?>
+	<div class="cylinder-wrapper">
+		<div class="cylinder <?= $class ?>" <?= $attributes ?>>
+			<div class="cylinder-container">
+				<div class="cylinder-frame">
+					<div class="strip">
+						<?php while ($i < $max) : ?>
+							<div class="cylinder-l cylinder-l-<?= $i ?>">
+								<?php if (isset($sides[$i])) {
+									$sides[$i]();
+								} ?>
+							</div>
+							<?php $i++; ?>
+						<?php endwhile; ?>
+					</div>
 				</div>
 			</div>
 		</div>
-    </div>
+	</div>
 
 <?php }; } ?>

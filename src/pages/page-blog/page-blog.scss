@@ -22,6 +22,9 @@ $sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
 	@media screen and (min-width: 410px) {
 		margin-top: 14em;
 	}
+	@media screen and (min-width: $-stop-phone-max ) {
+		margin-bottom: 3em;
+	}
 }
 
 .title {
@@ -39,6 +42,10 @@ $sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
 
 		&-popular {
 			margin-top: 0.5em;
+
+			@media screen and (min-width: $-stop-phone-max ) {
+				margin-top: 7em;
+			}
 		}
 	}
 }
