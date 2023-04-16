@@ -1,0 +1,117 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-03-28, 10:36:56 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+.product-preview {
+	&_button {
+		.product-preview {
+
+			&__button,
+			&__price {
+				display: none;
+			}
+
+			&__image {
+				border-radius: 5px 5px px_to_rem(100) 5px;
+				margin-bottom: 0;
+				color: $-c6;
+				text-decoration: none;
+
+				@media screen and (max-width: 600px) {
+					font-size: 30px;
+				}
+
+				@media screen and (max-width: 480px) {
+					font-size: 24px;
+					padding-left: 2.5rem;
+				}
+
+				div {
+					@media screen and (max-width: 600px) {
+						font-size: 15px;
+					}
+
+					@media screen and (max-width: 480px) {
+						font-size: 12px;
+					}
+				}
+			}
+
+			&__title {
+				margin-top: 2em;
+				margin-bottom: 0.4em;
+				font-size: px_to_em(20);
+			}
+		}
+	}
+
+	&__image {
+		border-radius: 5px px_to_rem(100) 5px 5px;
+		height: px_to_rem(187);
+		background: center/cover no-repeat;
+		margin-bottom: px_to_rem(18);
+		padding-left: 4rem;
+		letter-spacing: 0.25em;
+		font-size: 40px;
+		padding-top: 0.25em;
+		user-select: none;
+
+		@media screen and (max-width: 480px) {
+			height: px_to_rem(150);
+		}
+
+		div {
+			font-size: 20px;
+			margin-top: 0.6em;
+			letter-spacing: 0.7em;
+		}
+	}
+
+	&__button {
+		text-align: left;
+		padding-left: px_to_em(7);
+		background: linear-gradient(90deg, $-c2 0%, rgba(246, 211, 206, 0) 100%);
+	}
+
+	&__title {
+		font-size: px_to_em(30);
+		letter-spacing: 0.15em;
+		line-height: px_to_em(20, 30);
+		font-family: var(--f-ars-b);
+		margin-top: px_to_em(17, 30);
+		margin-bottom: px_to_em(18, 30);
+	}
+
+	&__tags {
+		margin-bottom: px_to_em(11);
+	}
+
+	&__type {
+		font-size: px_to_em(12);
+		font-style: italic;
+	}
+
+	&__price {
+		font-size: px_to_em(12);
+		display: inline-block;
+
+		&-sale {
+			color: $-c4;
+		}
+
+		&-before {
+			text-decoration: line-through;
+			margin-left: 0.5em;
+		}
+
+		&-normal {
+			color: #FE9081;
+			margin-top: -0.1em;
+			margin-left: 0.1em;
+		}
+	}
+}
