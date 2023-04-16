@@ -8,3 +8,4 @@ import './Product.php';
 import './Product.scss';
 
 import 'utils/php/attributes-string.php';
+import 'utils/php/format.php';
