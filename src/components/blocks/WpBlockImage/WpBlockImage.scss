@@ -85,7 +85,7 @@ $tippy-color: $-c2;
 		&[data-placement^=top] {
 			.tippy-arrow {
 				&::before {
-					border-top-color: $tippy-color;
+					border-top-color: $tippy-color !important;
 				}
 			}
 		}
@@ -93,7 +93,7 @@ $tippy-color: $-c2;
 		&[data-placement^=bottom] {
 			.tippy-arrow {
 				&::before {
-					border-bottom-color: $tippy-color;
+					border-bottom-color: $tippy-color !important;
 				}
 			}
 		}
