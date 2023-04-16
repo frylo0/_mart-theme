@@ -34,7 +34,7 @@ function Product (
 		if ($price_text)
 			$price_formatted = $price_text;
 		else
-			$price_formatted = number_format($price, 0, ',', ' ') . ' руб';
+			$price_formatted = format_price($price);
 
 		$annotation_text = get_field('annotation_text', $product->ID);
 		$annotation_image = get_field('annotation_picture', $product->ID);

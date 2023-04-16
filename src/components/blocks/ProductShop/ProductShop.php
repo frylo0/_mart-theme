@@ -45,12 +45,6 @@ function ProductShop ($attributes = []) { return function (
 
 		$query = new UrlQuery();
 		$shop_page = site_url('/shop');
-
-		if (!function_exists('format_tag_name')) {
-			function format_tag_name($tag_name) {
-				return str_replace(' ', '-', $tag_name);
-			}
-		}
 	?>
 
 	<div class="product-shop row rel <?= $class ?>" <?= $attributes ?>>

@@ -9,5 +9,6 @@ import './ProductShop.scss';
 
 import 'utils/php/attributes-string.php';
 import 'utils/php/url-query.php';
+import 'utils/php/format.php';
 
 import 'components/blocks/Product/Product';

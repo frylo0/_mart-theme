@@ -1,0 +1,36 @@
+@import '/styles/bundle.scss';
+
+$headerHeight: calc(123 / 16 * 1rem);
+$sectionMainMT: calc(47 / 16 * 1rem);
+$sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
+
+.single-product {
+	&__content {
+		margin-top: px_to_em(225);
+
+		@media screen and (max-width: 900px) {
+			margin-top: px_to_em(155);
+		}
+		p:first-of-type {
+			&::first-letter {
+				color: $-c3;
+				font-size: 3em;
+				line-height: 2rem;
+				float: left;
+				margin-right: 0.2rem;
+				font-family: var(--f-ars-b);
+			}
+		}
+
+		.product-preview {
+			&:first-child {
+				margin-bottom: 2.5em;
+			}
+
+			&:last-child {
+				margin-top: 3.5em;
+				margin-bottom: 2.5em;
+			}
+		}
+	}
+}
