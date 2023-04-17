@@ -47,7 +47,7 @@ function ProductPreview ($attributes = []) { return function (
 		$has_action = $action_text !== '';
 
 		$title = get_the_title($product);
-		$datetime = '';
+		$datetime = get_field('datetime', $product->ID);
 		$tags = get_field('themes', $product->ID);
 		$format = get_field('type', $product->ID)->name;
 
