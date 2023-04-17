@@ -1,13 +1,11 @@
 <?php use_header() ?>
 
-<?php $product = $post; ?>
-
-<div class="page single-product">
+<div class="page single-post">
 	<?php _Header() ?>
 	<?php ScrollTopButton() ?>
 
 	<?php Devicer::Start() ?>
-		<?php Article()($product, 'buy') ?>
+		<?php Article()($post, 'read') ?>
 	<?php Devicer::End() ?>
 
 	<?php Footer() ?>
