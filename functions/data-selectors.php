@@ -241,3 +241,31 @@ function select_blog_posts_popular() {
 
 	return $items;
 }
+
+function select_posts_by_theme(string $theme) {
+	$theme_term = get_term_by('slug', $theme, 'theme');
+
+	$meta_query = [];
+
+	if ($theme_term) {
+		array_push($meta_query, [
+			'key' => 'themes',
+			'compare' => 'LIKE',
+			'value' => $theme_term->term_id,
+		]);
+	}
+
+	$items = get_posts([
+		'numberposts' => 0,
+		'category'    => 0,
+		'orderby'     => 'menu_order',
+		//'order'       => 'DESC',
+		//'include'     => [],
+		//'exclude'     => [],
+		'post_type'   => 'post',
+		//'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+		'meta_query' => $meta_query,
+	]);
+
+	return $items;
+}
