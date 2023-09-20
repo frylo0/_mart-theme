@@ -21,7 +21,7 @@ function Product (
 		$title = get_the_title($product);
 
 		$more_link = get_the_permalink($product);
-		$buy_link = '#';
+		$buy_link = site_url("/buy/?id={$product->ID}");
 
 		$price_normal = get_field('price_normal', $product->ID);
 		$price_sales = get_field('price_sale', $product->ID);

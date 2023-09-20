@@ -5,14 +5,21 @@
  */
 
 class UrlQuery {
+	public $url;
 	private $query;
 
-	public function __construct() {
+	public function __construct(string $url = '') {
+		$url = $url !== ''
+			? $url 
+			: (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
+				. "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+		$this->url = $url;
 		$this->refresh();
 	}
 
 	public function refresh() {
-		$this->query = self::decode();
+		$this->query = self::decode($this->url);
 	}
 
 	public function reset() {
@@ -44,8 +51,8 @@ class UrlQuery {
 		return $query_string;
 	}
 
-	private static function decode() {
-		$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	private static function decode(string $url) {
+		$actual_link = $url;
 		$query_start_pos = strrpos($actual_link, '?');
 		if ($query_start_pos === false)
 			$query_start_pos = mb_strlen($actual_link) - 1;
