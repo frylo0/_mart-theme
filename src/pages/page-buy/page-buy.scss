@@ -1,3 +1,77 @@
+@import '/styles/bundle.scss';
+
+$headerHeight: calc(123 / 16 * 1rem);
+$sectionMainMT: calc(47 / 16 * 1rem);
+$sectionMainHeight: calc(100vh - #{$headerHeight} - #{$sectionMainMT} - 2px);
+
+$-stop-mobile: 700px;
+
+
 .page-buy {
-	
+	.title {
+		&_page {
+			margin-top: 14rem;
+			margin-bottom: px_to_rem(38);
+			font-size: px_to_em(30);
+			line-height: 0.85em;
+
+			@media screen and (max-width: 630px) {
+				margin-top: 10rem;
+				margin-bottom: 1.75rem;
+			}
+		}
+	}
+
+	.product-shop {
+		margin-bottom: px_to_em(20);
+		margin-inline: auto;
+
+		@media screen and (max-width: $-stop-phone-max) {
+			$margin-tb: 3.5em;
+			margin-top: $margin-tb;
+			margin-bottom: $margin-tb;
+		}
+
+		&__controls {
+			display: none;
+		}
+	}
+
+	.payment {
+		margin-block: 3.5em;
+	}
+
+	.messengers {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 2em;
+		margin-block-start: 3em;
+
+		@media screen and (max-width: $-stop-mobile) {
+			flex-direction: column;
+			gap: 1em;
+			margin-block: 2em;
+		}
+	}
+
+	.messenger {
+		color: inherit;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1em;
+
+		@media screen and (max-width: $-stop-mobile) {
+			flex-direction: row;
+		}
+
+		img {
+			width: 7em;
+
+			@media screen and (max-width: $-stop-mobile) {
+				width: 2em;
+			}
+		}
+	}
 }

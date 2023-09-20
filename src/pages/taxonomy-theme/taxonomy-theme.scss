@@ -23,8 +23,8 @@ $blog-articles-margin: px_to_em(50);
 
 .articles {
 	z-index: 20;
-	margin-left: -$blog-articles-margin / 2;
-	margin-right: -$blog-articles-margin / 2;
+	margin-left: calc(-1 * $blog-articles-margin / 2);
+	margin-right: calc(-1 * $blog-articles-margin / 2);
 	margin-bottom: 1em;
 
 	@media screen and (max-width: 630px) {
@@ -39,8 +39,8 @@ div.product-shop {
 	}
 
 	$margin: $blog-articles-margin;
-	margin-right: $margin / 2;
-	margin-left: $margin / 2;
+	margin-right: calc($margin / 2);
+	margin-left: calc($margin / 2);
 	margin-bottom: $margin * 1;
 
 	@media screen and (max-width: 940px) {

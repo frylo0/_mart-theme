@@ -7,6 +7,43 @@
 ?>
 
 <?php
+function get_product_price(WP_Post $product) {
+	$price_normal = get_field('price_normal', $product->ID);
+	$price_sale = get_field('price_sale', $product->ID);
+	$is_sales = isset($price_sale) && $price_sale > 0;
+
+	$price_normal_pretty = '';
+	$price_sale_pretty = '';
+
+	if ($price_normal)
+		$price_normal_pretty = number_format(floatval($price_normal), 0, ',', ' ') . ' руб';
+	if ($price_sale)
+		$price_sale_pretty = number_format(floatval($price_sale), 0, ',', ' ') . ' руб';
+
+	return (object) [
+		'normal' => (object) [
+			'raw' => $price_normal,
+			'pretty' => $price_normal_pretty,
+		],
+		'sales' => (object) [
+			'raw' => $price_sale,
+			'pretty' => $price_sale_pretty,
+		],
+		'valuable' => $is_sales
+			? (object) [
+				'raw' => $price_sale,
+				'pretty' => $price_sale_pretty,
+			]
+			: (object) [
+				'raw' => $price_normal,
+				'pretty' => $price_normal_pretty,
+			],
+		'is_sales' => $is_sales,
+	];
+}
+?>
+
+<?php
 function ProductShop ($attributes = []) { return function (
 	WP_Post $product,
 	bool $show_creation_date = false,
@@ -16,17 +53,12 @@ function ProductShop ($attributes = []) { return function (
 		attributes_extract($attributes, 'class', $class);
 		attributes($attributes);
 
-		$price_normal = get_field('price_normal', $product->ID);
-		$price_sale = get_field('price_sale', $product->ID);
-		$is_sales = isset($price_sale) && $price_sale > 0;
+		$price = get_product_price($product);
 
-		$price_normal_pretty = '';
-		$price_sale_pretty = '';
-
-		if ($price_normal)
-			$price_normal_pretty = number_format(floatval($price_normal), 0, ',', ' ') . ' руб';
-		if ($price_sale)
-			$price_sale_pretty = number_format(floatval($price_sale), 0, ',', ' ') . ' руб';
+		$is_sales = $price->is_sales;
+		$price_sale_pretty = $price->sales->pretty;
+		$price_normal = $price->normal->raw;
+		$price_normal_pretty = $price->normal->pretty;
 
 		$annotation_text = get_field('annotation_text', $product->ID);
 		$annotation_image = get_field('annotation_picture', $product->ID)['url'];
@@ -41,7 +73,8 @@ function ProductShop ($attributes = []) { return function (
 		$format = get_field('type', $product->ID)->name;
 
 		$more_link = get_the_permalink($product);
-		$buy_link = site_url('/buy' . '/' . $product->ID);
+
+		$buy_link = site_url('/buy' . '?id=' . $product->ID);
 
 		$query = new UrlQuery();
 		$shop_page = site_url('/shop');
