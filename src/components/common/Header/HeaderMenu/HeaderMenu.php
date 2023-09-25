@@ -20,8 +20,6 @@ function HeaderMenu (
 		$current_url = home_url($wp->request);
 	?>
 
-	<?php $is_logged_in = true; ?>
-
 	<div class="header__menu rel <?= $class ?>" <?= $attributes ?>>
 		<div class="header__menu-underline header__menu-underline_main abs"></div>
 		<div class="header__menu-underline abs"></div>
@@ -30,12 +28,6 @@ function HeaderMenu (
 				<?php $current_class = $href === $current_url ? 'header__menu-li_current' : ''; ?>
 				<?php _Link($title, $href, ['class' => "header__menu-li ml1o25 rel $current_class"]) ?>
 			<?php endforeach; ?>
-
-			<?php if ($is_logged_in) : ?>
-				<?php _Link('Личный кабинет', '../office', ['class' => "header__menu-li ml1o25 rel"]) ?>
-			<?php else: ?>
-				<?php _Link('Вход/Регистрация', '../login', ['class' => "header__menu-li ml1o25 rel"]) ?>
-			<?php endif; ?>
 		</div>
 	</div>
 <?php } ?>
