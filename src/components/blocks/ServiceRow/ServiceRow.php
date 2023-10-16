@@ -16,7 +16,7 @@ function ServiceRow (
 		attributes($attributes);
 
 		$more_link = get_the_permalink($service);
-		$sign_up_link = '#';
+		$enroll_link = site_url('/buy/?id=' . $service->ID);
 		$title = get_the_title($service);
 		$price = get_field('price', $service->ID);
 	?>
@@ -27,7 +27,7 @@ function ServiceRow (
 		</a>
     	<div class="service-row__info">
     		<div class="service-row__price"><?= $price ?></div>
-    		<a href="<?= $sign_up_link ?>" class="service-row__button">
+    		<a href="<?= $enroll_link ?>" class="service-row__button">
 				<?php Button::Start(['class' => 'w100']) ?>
 					Записаться
 				<?php Button::End() ?>

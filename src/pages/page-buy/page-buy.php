@@ -48,6 +48,10 @@ switch ($post_type) {
 		$title = 'Записаться на консультацию';
 		$price = get_field('price', $product->ID);
 		break;
+	case 'service':
+		$title = 'Приобрести услугу';
+		$price = get_field('price', $product->ID);
+		break;
 	default:
 		echo 'Invalid post type for variables setup';
 		die;
@@ -62,6 +66,11 @@ switch ($post_type) {
 
 	<?php Devicer::Start() ?>
 		<?php Title($title, ['class' => 'title_page']) ?>
+
+		<?php if ($post_type === 'service') : ?>
+			<?php $service_title = get_the_title($product); ?>
+			<?php Title($service_title); ?>
+		<?php endif; ?>
 
 		<div class="products mA wfc">
 			<?php PreviewAny()($product) ?>
