@@ -23,8 +23,6 @@ if (!in_array($post_type, $allowed_post_types)) {
 	die;
 }
 
-$price = get_product_price($product)->valuable->pretty;
-
 $url_encoded = urlencode((new UrlQuery())->url);
 ?>
 
@@ -44,10 +42,15 @@ $whatsapp_deep_link = "whatsapp://send?phone=%2B$whatsapp_phone_number&text=$wha
 switch ($post_type) {
 	case 'product':
 		$title = 'Покупка';
+		$price = get_product_price($product)->valuable->pretty;
 		break;
 	case 'service-type':
 		$title = 'Записаться на консультацию';
+		$price = get_field('price', $product->ID);
 		break;
+	default:
+		echo 'Invalid post type for variables setup';
+		die;
 }
 ?>
 
