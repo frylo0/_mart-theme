@@ -22,6 +22,12 @@ $-stop-mobile: 700px;
 		}
 	}
 
+	.products {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
 	.product-shop {
 		margin-bottom: px_to_em(20);
 		margin-inline: auto;

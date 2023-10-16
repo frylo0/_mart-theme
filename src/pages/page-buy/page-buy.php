@@ -23,9 +23,6 @@ if (!in_array($post_type, $allowed_post_types)) {
 	die;
 }
 
-$title = get_the_title($product);
-$price = get_product_price($product)->valuable->pretty;
-
 $url_encoded = urlencode((new UrlQuery())->url);
 ?>
 
@@ -41,6 +38,22 @@ $whatsapp_message_text = str_replace('%url%', $url_encoded, $settings['whatsapp'
 $whatsapp_deep_link = "whatsapp://send?phone=%2B$whatsapp_phone_number&text=$whatsapp_message_text";
 ?>
 
+<?php 
+switch ($post_type) {
+	case 'product':
+		$title = 'Покупка';
+		$price = get_product_price($product)->valuable->pretty;
+		break;
+	case 'service-type':
+		$title = 'Записаться на консультацию';
+		$price = get_field('price', $product->ID);
+		break;
+	default:
+		echo 'Invalid post type for variables setup';
+		die;
+}
+?>
+
 <?php use_header() ?>
 
 <div class="page page-buy">
@@ -48,10 +61,10 @@ $whatsapp_deep_link = "whatsapp://send?phone=%2B$whatsapp_phone_number&text=$wha
 	<?php ScrollTopButton() ?>
 
 	<?php Devicer::Start() ?>
-		<?php Title("Покупка: $title", ['class' => 'title_page']) ?>
+		<?php Title($title, ['class' => 'title_page']) ?>
 
 		<div class="products mA wfc">
-			<?php ProductShop()($product, false, false) ?>
+			<?php PreviewAny()($product) ?>
 
 			<div class="payment">
 				<center class="messengers-text">

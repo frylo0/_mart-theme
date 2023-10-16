@@ -1,0 +1,40 @@
+/*
+ * Author:  Fedor Nikonov (fritylo)
+ * Date:    2023-09-25, 11:02:19 PM
+ * Company: frity.org
+ */
+
+@import '/styles/bundle.scss';
+
+.preview-any {
+	&.product {
+		$size: px_to_em(232);
+		$imageFactor: 1;
+
+		width: $size;
+
+		&__image {
+			height: $size * $imageFactor;
+			width: $size * $imageFactor;
+		}
+
+		@media screen and (max-width: 620px) {
+			&_normal.product,
+			&_normal.product &__image-wrapper {
+				$size: px_to_em(210);
+				width: $size;
+
+				div.product__image {
+					height: $size * $imageFactor;
+					width: $size * $imageFactor;
+				}
+			}
+		}
+	}
+
+	&_service-type {
+		.product__footer {
+			display: none;
+		}
+	}
+}
