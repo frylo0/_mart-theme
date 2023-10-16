@@ -8,7 +8,7 @@
 function select_index_page_sections() {
 	// параметры по умолчанию
 	$sections = get_posts([
-		'numberposts' => 0,
+		'numberposts' => -1,
 		'category'    => 0,
 		'orderby'     => 'menu_order',
 		//'order'       => 'DESC',
@@ -64,7 +64,7 @@ function select_recommended_products($count) {
 function select_consult_types() {
 	// параметры по умолчанию
 	$items = get_posts([
-		'numberposts' => 0,
+		'numberposts' => -1,
 		'category'    => 0,
 		'orderby'     => 'menu_order',
 		//'order'       => 'DESC',
@@ -82,7 +82,7 @@ function select_consult_types() {
 function select_consult_list() {
 	// параметры по умолчанию
 	$items = get_posts([
-		'numberposts' => 0,
+		'numberposts' => -1,
 		'category'    => 0,
 		'orderby'     => 'menu_order',
 		//'order'       => 'DESC',
@@ -94,13 +94,15 @@ function select_consult_list() {
 		//'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
 	]);
 
+	//var_dump($items);
+
 	return $items;
 }
 
 function select_events() {
 	// параметры по умолчанию
 	$items = get_posts([
-		'numberposts' => 0,
+		'numberposts' => -1,
 		'category'    => 0,
 		'orderby'     => 'menu_order',
 		//'order'       => 'DESC',
@@ -118,7 +120,7 @@ function select_events() {
 function select_numerology_sections() {
 	// параметры по умолчанию
 	$items = get_posts([
-		'numberposts' => 0,
+		'numberposts' => -1,
 		'category'    => 0,
 		'orderby'     => 'menu_order',
 		//'order'       => 'DESC',
@@ -160,7 +162,7 @@ function select_shop_products(string $price, string $theme, string $format) {
 	}
 
 	$items = get_posts([
-		'numberposts' => 0,
+		'numberposts' => -1,
 		'category'    => 0,
 		'orderby'     => 'menu_order',
 		//'order'       => 'DESC',
@@ -256,7 +258,7 @@ function select_posts_by_theme(string $theme) {
 	}
 
 	$items = get_posts([
-		'numberposts' => 0,
+		'numberposts' => -1,
 		'category'    => 0,
 		'orderby'     => 'menu_order',
 		//'order'       => 'DESC',

@@ -30,11 +30,11 @@ function ProductPreview ($attributes = []) { return function (
 		switch ($type) {
 			case 'enroll':
 				$action_text = 'Записаться';
-				$action_link = '#';
+				$action_link = site_url('/buy/?id=' . $product->ID);
 				break;
 			case 'buy':
 				$action_text = 'Купить';
-				$action_link = '#';
+				$action_link = site_url('/buy/?id=' . $product->ID);
 				break;
 			case 'read':
 				$action_text = '';
