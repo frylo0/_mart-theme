@@ -27,7 +27,7 @@ function PreviewAny ($attributes = []) { return function (
 			Product($product, 0, 'Записаться', $price, $attributes);
 		}
 		elseif ($post_type === "service") {
-
+			// Nothing, because title at page-buy is looks pretty good, and we don't need preview
 		}
 		else if ($post_type === "numerology-section") {
 			$price = null;
