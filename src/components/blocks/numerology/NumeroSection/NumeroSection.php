@@ -22,9 +22,8 @@ return function (
 
 		$content = get_the_content(null, false, $section);
 
-		$link = '';
-		$contacts_link = '#';
-		$enroll_link = '#';
+		$contacts_link = site_url('/#contacts');
+		$enroll_link = site_url('/buy/?id=' . $section->ID);
 
 		$shadows = get_field('shadow', $section->ID);
 
@@ -41,7 +40,6 @@ return function (
 	?>
 
 	<?php Title($section_title, [
-		'id' => $link,
 		'class' => 'numero-content-title',
 	]) ?>
 

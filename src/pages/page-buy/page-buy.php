@@ -16,41 +16,52 @@ if ($product === null) {
 	die;
 }
 
-$allowed_post_types = ['product', 'service', 'service-type'];
+$allowed_post_types = ['product', 'service', 'service-type', 'numerology-section'];
+$enroll_post_types = ['numerology-section'];
 
 if (!in_array($post_type, $allowed_post_types)) {
 	echo "Invalid post type";
 	die;
 }
 
+$is_enroll = in_array($post_type, $enroll_post_types);
 $url_encoded = urlencode((new UrlQuery())->url);
 ?>
 
 <?php
 $settings = select_setting('buy');
 
-$viber_phone_number = $settings['viber']['phone'];
-$viber_message_text = str_replace('%url%', $url_encoded, $settings['viber']['message']);
-$viber_deep_link = "viber://chat/?number=%2B$viber_phone_number&draft=$viber_message_text";
+$viber_deep_link = get_deep_message('viber', $settings, $is_enroll, $url_encoded);
+$whatsapp_deep_link = get_deep_message('whatsapp', $settings, $is_enroll, $url_encoded);
+?>
 
-$whatsapp_phone_number = $settings['whatsapp']['phone'];
-$whatsapp_message_text = str_replace('%url%', $url_encoded, $settings['whatsapp']['message']);
-$whatsapp_deep_link = "whatsapp://send?phone=%2B$whatsapp_phone_number&text=$whatsapp_message_text";
+<?php 
+function strong($text) {
+	return "<strong>$text</strong>";
+}
 ?>
 
 <?php 
 switch ($post_type) {
 	case 'product':
 		$title = 'Покупка';
-		$price = get_product_price($product)->valuable->pretty;
+		$text_to_pay = 'К оплате ' . strong(get_product_price($product)->valuable->pretty);
+		$text_pay_guide = 'Договориться об оплате вы можете в удобном для вас мессенджере:';
 		break;
 	case 'service-type':
 		$title = 'Записаться на консультацию';
-		$price = get_field('price', $product->ID);
+		$text_to_pay = 'К оплате ' . strong(get_field('price', $product->ID));
+		$text_pay_guide = 'Договориться об оплате вы можете в удобном для вас мессенджере:';
 		break;
 	case 'service':
 		$title = 'Приобрести услугу';
-		$price = get_field('price', $product->ID);
+		$text_to_pay = 'К оплате ' . strong(get_field('price', $product->ID));
+		$text_pay_guide = 'Договориться об оплате вы можете в удобном для вас мессенджере:';
+		break;
+	case 'numerology-section':
+		$title = 'Записаться на нумерологическую консультацию';
+		$text_to_pay = null;
+		$text_pay_guide = 'Чтобы записаться перейдите в один из следующих мессенджеров:';
 		break;
 	default:
 		echo 'Invalid post type for variables setup';
@@ -77,10 +88,10 @@ switch ($post_type) {
 
 			<div class="payment">
 				<center class="messengers-text">
-					<p>К оплате <strong><?= $price ?></strong>.</p>
-					<p>
-						Договориться об оплате вы можете в удобном для вас мессенджере:
-					</p>
+					<?php if ($text_to_pay !== null) : ?>
+						<p><?= $text_to_pay ?></p>
+					<?php endif; ?>
+					<p><?= $text_pay_guide ?></p>
 				</center>
 
 				<div class="messengers">
