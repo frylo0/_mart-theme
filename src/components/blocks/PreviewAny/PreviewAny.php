@@ -29,11 +29,16 @@ function PreviewAny ($attributes = []) { return function (
 		elseif ($post_type === "service") {
 
 		}
+		else if ($post_type === "numerology-section") {
+			$price = null;
+			$attributes['class'] .= ' product_normal';
+			Product($product, 0, 'Записаться', $price, $attributes);
+		}
 		elseif ($post_type === "event") {
 
 		}
 		else {
-			echo "Invalid post type \"$post_type\"";
+			echo "Invalid post type \"$post_type\" for PreviewAny";
 			die;
 		}
 	?>

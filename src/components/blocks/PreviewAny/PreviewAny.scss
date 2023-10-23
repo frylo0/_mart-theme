@@ -32,9 +32,16 @@
 		}
 	}
 
-	&_service-type {
+	&_service-type, &_numerology-section {
 		.product__footer {
 			display: none;
+		}
+		.product__description {
+			margin-bottom: 0;
+
+			p {
+				margin-bottom: 0;
+			}
 		}
 	}
 }
