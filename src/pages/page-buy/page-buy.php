@@ -16,8 +16,8 @@ if ($product === null) {
 	die;
 }
 
-$allowed_post_types = ['product', 'service', 'service-type', 'numerology-section'];
-$enroll_post_types = ['numerology-section'];
+$allowed_post_types = ['product', 'service', 'service-type', 'numerology-section', 'event'];
+$enroll_post_types = ['numerology-section', 'event'];
 
 if (!in_array($post_type, $allowed_post_types)) {
 	echo "Invalid post type";
@@ -60,6 +60,11 @@ switch ($post_type) {
 		break;
 	case 'numerology-section':
 		$title = 'Записаться на нумерологическую консультацию';
+		$text_to_pay = null;
+		$text_pay_guide = 'Чтобы записаться перейдите в один из следующих мессенджеров:';
+		break;
+	case 'event':
+		$title = 'Записаться на мероприятие';
 		$text_to_pay = null;
 		$text_pay_guide = 'Чтобы записаться перейдите в один из следующих мессенджеров:';
 		break;

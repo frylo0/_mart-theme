@@ -22,7 +22,7 @@ function EventBlock (
 
 		$datetime_formatted = preg_replace('/, \d+/', ', ', $datetime);
 
-		$enroll_link = '#';
+		$enroll_link = site_url('/buy/?id=' . $event->ID);
 
 		// TODO: Use some logical fields
 		$duration = get_field('duration', $event->ID);
