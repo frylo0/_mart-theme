@@ -31,7 +31,7 @@ function Product (
 		else
 			$price = $price_normal;
 
-		if ($price_text === null || !$price_text)
+		if ($price_text === null || $price_text)
 			$price_formatted = $price_text;
 		else
 			$price_formatted = format_price($price);
