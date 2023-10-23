@@ -35,7 +35,9 @@ function PreviewAny ($attributes = []) { return function (
 			Product($product, 0, 'Записаться', $price, $attributes);
 		}
 		elseif ($post_type === "event") {
-
+			$price = null;
+			$attributes['class'] .= ' product_normal';
+			Product($product, 0, 'Записаться', $price, $attributes);
 		}
 		else {
 			echo "Invalid post type \"$post_type\" for PreviewAny";
