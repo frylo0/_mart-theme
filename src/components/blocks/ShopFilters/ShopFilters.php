@@ -19,6 +19,7 @@ function ShopFilters($attributes = []) { return function(
 		$selected_theme = $query->get('theme') ?? '*';
 		$selected_price = $query->get('price') ?? '*';
 		$selected_format = $query->get('format') ?? '*';
+		$selected_sale = $query->get('sale') ?? '*';
 
 		function get_taxonomy_options($taxonomy, $default_option) {
 			$options = [ '*' => $default_option ];
@@ -63,6 +64,13 @@ function ShopFilters($attributes = []) { return function(
 			'selected_value' => $selected_format,
 			'Option' => ShopFilterOption('format')
 		]) ?>
+
+		<!-- Sale -->
+        <?php Select()([
+            '*' => 'Все предложения',
+            'true' => 'Только со скидкой',
+            'false' => 'Только без скидки',
+		], [ 'selected_value' => $selected_sale, 'Option' => ShopFilterOption('sale') ]) ?>
     </div>
 <?php };} ?>
 
