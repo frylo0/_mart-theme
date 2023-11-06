@@ -15,7 +15,7 @@ function SectionSalesBlock(
 	attributes($attributes);
 	
 	$settings = select_setting('sales_badge');
-	$link = get_permalink(get_page_by_path('sales'));
+	$link = get_permalink(get_page_by_path('shop')) . '?sale=true';
 
 	$i = -1;
 	$D = 150;

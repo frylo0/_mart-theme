@@ -19,8 +19,9 @@ function ShopProducts ($attributes = []) { return function (
 		$selected_theme = $query->get('theme') ?? '*';
 		$selected_price = $query->get('price') ?? '*';
 		$selected_format = $query->get('format') ?? '*';
+		$selected_sale = $query->get('sale') ?? '*';
 
-		$products = select_shop_products($selected_price, $selected_theme, $selected_format);
+		$products = select_shop_products($selected_price, $selected_theme, $selected_format, $selected_sale);
 
 		$has_result = count($products) > 0;
 	?>

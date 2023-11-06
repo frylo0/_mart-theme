@@ -135,9 +135,11 @@ function select_numerology_sections() {
 	return $items;
 }
 
-function select_shop_products(string $price, string $theme, string $format) {
+function select_shop_products(string $price, string $theme, string $format, string $sale) {
 	$format_term = false;
 	$theme_term = false;
+
+	$is_sale_param = preg_match('/^(true|false)$/', $sale) !== 0;
 
 	if ($format !== '*')
 		$format_term = get_term_by('slug', $format, 'product-type');
@@ -159,6 +161,27 @@ function select_shop_products(string $price, string $theme, string $format) {
 			'compare' => 'LIKE',
 			'value' => $theme_term->term_id,
 		]);
+	}
+
+	if ($is_sale_param) {
+		switch ($sale) {
+			case 'true':
+				array_push($meta_query, [
+					'key' => 'price_sale',
+					'compare' => '!=',
+					'value' => '',
+				]);
+				break;
+			case 'false':
+				array_push($meta_query, [
+					'key' => 'price_sale',
+					'compare' => '=',
+					'value' => '',
+				]);
+				break;
+			default:
+				throw new Exception("Unexpected value for \$sale param in `select_sho_products` with value '$sale'.");
+		}
 	}
 
 	$items = get_posts([
